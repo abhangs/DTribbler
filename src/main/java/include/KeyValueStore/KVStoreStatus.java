@@ -5,11 +5,15 @@ package include.KeyValueStore; /**
  *  @generated
  */
 
+import java.util.Map;
+import java.util.HashMap;
+import org.apache.thrift.TEnum;
+
 /**
  * Enum type for returning status of a RPC request made to the
  * the storage server.
  */
-public enum KVStoreStatus implements org.apache.thrift.TEnum {
+public enum KVStoreStatus implements TEnum {
   OK(1),
   EKEYNOTFOUND(2),
   EITEMNOTFOUND(3),

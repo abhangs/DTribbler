@@ -35,29 +35,33 @@ public class KeyValueStore {
    */
   public interface Iface {
 
-    public GetResponse Get(String key) throws org.apache.thrift.TException;
+    public GetResponse Get(String key) throws TException;
 
-    public GetListResponse GetList(String key) throws org.apache.thrift.TException;
+    public GetListResponse GetList(String key) throws TException;
 
-    public KVStoreStatus Put(String key, String value, String clientid) throws org.apache.thrift.TException;
+    public KVStoreStatus Put(String key, String value, String clientid) throws TException;
 
-    public KVStoreStatus AddToList(String key, String value, String clientid) throws org.apache.thrift.TException;
+    public KVStoreStatus AddToList(String key, String value, String clientid) throws TException;
 
-    public KVStoreStatus RemoveFromList(String key, String value, String clientid) throws org.apache.thrift.TException;
+    public KVStoreStatus RemoveFromList(String key, String value, String clientid) throws TException;
+
+    public ClockResponse Clock(long atLeast) throws TException;
 
   }
 
   public interface AsyncIface {
 
-    public void Get(String key, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.Get_call> resultHandler) throws org.apache.thrift.TException;
+    public void Get(String key, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.Get_call> resultHandler) throws TException;
 
-    public void GetList(String key, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.GetList_call> resultHandler) throws org.apache.thrift.TException;
+    public void GetList(String key, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.GetList_call> resultHandler) throws TException;
 
-    public void Put(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.Put_call> resultHandler) throws org.apache.thrift.TException;
+    public void Put(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.Put_call> resultHandler) throws TException;
 
-    public void AddToList(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.AddToList_call> resultHandler) throws org.apache.thrift.TException;
+    public void AddToList(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.AddToList_call> resultHandler) throws TException;
 
-    public void RemoveFromList(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.RemoveFromList_call> resultHandler) throws org.apache.thrift.TException;
+    public void RemoveFromList(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.RemoveFromList_call> resultHandler) throws TException;
+
+    public void Clock(long atLeast, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.Clock_call> resultHandler) throws TException;
 
   }
 
@@ -81,20 +85,20 @@ public class KeyValueStore {
       super(iprot, oprot);
     }
 
-    public GetResponse Get(String key) throws org.apache.thrift.TException
+    public GetResponse Get(String key) throws TException
     {
       send_Get(key);
       return recv_Get();
     }
 
-    public void send_Get(String key) throws org.apache.thrift.TException
+    public void send_Get(String key) throws TException
     {
       Get_args args = new Get_args();
       args.setKey(key);
       sendBase("Get", args);
     }
 
-    public GetResponse recv_Get() throws org.apache.thrift.TException
+    public GetResponse recv_Get() throws TException
     {
       Get_result result = new Get_result();
       receiveBase(result, "Get");
@@ -104,20 +108,20 @@ public class KeyValueStore {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "Get failed: unknown result");
     }
 
-    public GetListResponse GetList(String key) throws org.apache.thrift.TException
+    public GetListResponse GetList(String key) throws TException
     {
       send_GetList(key);
       return recv_GetList();
     }
 
-    public void send_GetList(String key) throws org.apache.thrift.TException
+    public void send_GetList(String key) throws TException
     {
       GetList_args args = new GetList_args();
       args.setKey(key);
       sendBase("GetList", args);
     }
 
-    public GetListResponse recv_GetList() throws org.apache.thrift.TException
+    public GetListResponse recv_GetList() throws TException
     {
       GetList_result result = new GetList_result();
       receiveBase(result, "GetList");
@@ -127,13 +131,13 @@ public class KeyValueStore {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "GetList failed: unknown result");
     }
 
-    public KVStoreStatus Put(String key, String value, String clientid) throws org.apache.thrift.TException
+    public KVStoreStatus Put(String key, String value, String clientid) throws TException
     {
       send_Put(key, value, clientid);
       return recv_Put();
     }
 
-    public void send_Put(String key, String value, String clientid) throws org.apache.thrift.TException
+    public void send_Put(String key, String value, String clientid) throws TException
     {
       Put_args args = new Put_args();
       args.setKey(key);
@@ -142,7 +146,7 @@ public class KeyValueStore {
       sendBase("Put", args);
     }
 
-    public KVStoreStatus recv_Put() throws org.apache.thrift.TException
+    public KVStoreStatus recv_Put() throws TException
     {
       Put_result result = new Put_result();
       receiveBase(result, "Put");
@@ -152,13 +156,13 @@ public class KeyValueStore {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "Put failed: unknown result");
     }
 
-    public KVStoreStatus AddToList(String key, String value, String clientid) throws org.apache.thrift.TException
+    public KVStoreStatus AddToList(String key, String value, String clientid) throws TException
     {
       send_AddToList(key, value, clientid);
       return recv_AddToList();
     }
 
-    public void send_AddToList(String key, String value, String clientid) throws org.apache.thrift.TException
+    public void send_AddToList(String key, String value, String clientid) throws TException
     {
       AddToList_args args = new AddToList_args();
       args.setKey(key);
@@ -167,7 +171,7 @@ public class KeyValueStore {
       sendBase("AddToList", args);
     }
 
-    public KVStoreStatus recv_AddToList() throws org.apache.thrift.TException
+    public KVStoreStatus recv_AddToList() throws TException
     {
       AddToList_result result = new AddToList_result();
       receiveBase(result, "AddToList");
@@ -177,13 +181,13 @@ public class KeyValueStore {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "AddToList failed: unknown result");
     }
 
-    public KVStoreStatus RemoveFromList(String key, String value, String clientid) throws org.apache.thrift.TException
+    public KVStoreStatus RemoveFromList(String key, String value, String clientid) throws TException
     {
       send_RemoveFromList(key, value, clientid);
       return recv_RemoveFromList();
     }
 
-    public void send_RemoveFromList(String key, String value, String clientid) throws org.apache.thrift.TException
+    public void send_RemoveFromList(String key, String value, String clientid) throws TException
     {
       RemoveFromList_args args = new RemoveFromList_args();
       args.setKey(key);
@@ -192,7 +196,7 @@ public class KeyValueStore {
       sendBase("RemoveFromList", args);
     }
 
-    public KVStoreStatus recv_RemoveFromList() throws org.apache.thrift.TException
+    public KVStoreStatus recv_RemoveFromList() throws TException
     {
       RemoveFromList_result result = new RemoveFromList_result();
       receiveBase(result, "RemoveFromList");
@@ -200,6 +204,29 @@ public class KeyValueStore {
         return result.success;
       }
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "RemoveFromList failed: unknown result");
+    }
+
+    public ClockResponse Clock(long atLeast) throws TException
+    {
+      send_Clock(atLeast);
+      return recv_Clock();
+    }
+
+    public void send_Clock(long atLeast) throws TException
+    {
+      Clock_args args = new Clock_args();
+      args.setAtLeast(atLeast);
+      sendBase("Clock", args);
+    }
+
+    public ClockResponse recv_Clock() throws TException
+    {
+      Clock_result result = new Clock_result();
+      receiveBase(result, "Clock");
+      if (result.isSetSuccess()) {
+        return result.success;
+      }
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "Clock failed: unknown result");
     }
 
   }
@@ -220,7 +247,7 @@ public class KeyValueStore {
       super(protocolFactory, clientManager, transport);
     }
 
-    public void Get(String key, org.apache.thrift.async.AsyncMethodCallback<Get_call> resultHandler) throws org.apache.thrift.TException {
+    public void Get(String key, org.apache.thrift.async.AsyncMethodCallback<Get_call> resultHandler) throws TException {
       checkReady();
       Get_call method_call = new Get_call(key, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -229,12 +256,12 @@ public class KeyValueStore {
 
     public static class Get_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String key;
-      public Get_call(String key, org.apache.thrift.async.AsyncMethodCallback<Get_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public Get_call(String key, org.apache.thrift.async.AsyncMethodCallback<Get_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.key = key;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("Get", org.apache.thrift.protocol.TMessageType.CALL, 0));
         Get_args args = new Get_args();
         args.setKey(key);
@@ -242,8 +269,8 @@ public class KeyValueStore {
         prot.writeMessageEnd();
       }
 
-      public GetResponse getResult() throws org.apache.thrift.TException {
-        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+      public GetResponse getResult() throws TException {
+        if (getState() != State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -252,7 +279,7 @@ public class KeyValueStore {
       }
     }
 
-    public void GetList(String key, org.apache.thrift.async.AsyncMethodCallback<GetList_call> resultHandler) throws org.apache.thrift.TException {
+    public void GetList(String key, org.apache.thrift.async.AsyncMethodCallback<GetList_call> resultHandler) throws TException {
       checkReady();
       GetList_call method_call = new GetList_call(key, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -261,12 +288,12 @@ public class KeyValueStore {
 
     public static class GetList_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String key;
-      public GetList_call(String key, org.apache.thrift.async.AsyncMethodCallback<GetList_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public GetList_call(String key, org.apache.thrift.async.AsyncMethodCallback<GetList_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.key = key;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("GetList", org.apache.thrift.protocol.TMessageType.CALL, 0));
         GetList_args args = new GetList_args();
         args.setKey(key);
@@ -274,8 +301,8 @@ public class KeyValueStore {
         prot.writeMessageEnd();
       }
 
-      public GetListResponse getResult() throws org.apache.thrift.TException {
-        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+      public GetListResponse getResult() throws TException {
+        if (getState() != State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -284,7 +311,7 @@ public class KeyValueStore {
       }
     }
 
-    public void Put(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<Put_call> resultHandler) throws org.apache.thrift.TException {
+    public void Put(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<Put_call> resultHandler) throws TException {
       checkReady();
       Put_call method_call = new Put_call(key, value, clientid, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -295,14 +322,14 @@ public class KeyValueStore {
       private String key;
       private String value;
       private String clientid;
-      public Put_call(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<Put_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public Put_call(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<Put_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.key = key;
         this.value = value;
         this.clientid = clientid;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("Put", org.apache.thrift.protocol.TMessageType.CALL, 0));
         Put_args args = new Put_args();
         args.setKey(key);
@@ -312,8 +339,8 @@ public class KeyValueStore {
         prot.writeMessageEnd();
       }
 
-      public KVStoreStatus getResult() throws org.apache.thrift.TException {
-        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+      public KVStoreStatus getResult() throws TException {
+        if (getState() != State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -322,7 +349,7 @@ public class KeyValueStore {
       }
     }
 
-    public void AddToList(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<AddToList_call> resultHandler) throws org.apache.thrift.TException {
+    public void AddToList(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<AddToList_call> resultHandler) throws TException {
       checkReady();
       AddToList_call method_call = new AddToList_call(key, value, clientid, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -333,14 +360,14 @@ public class KeyValueStore {
       private String key;
       private String value;
       private String clientid;
-      public AddToList_call(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<AddToList_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public AddToList_call(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<AddToList_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.key = key;
         this.value = value;
         this.clientid = clientid;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("AddToList", org.apache.thrift.protocol.TMessageType.CALL, 0));
         AddToList_args args = new AddToList_args();
         args.setKey(key);
@@ -350,8 +377,8 @@ public class KeyValueStore {
         prot.writeMessageEnd();
       }
 
-      public KVStoreStatus getResult() throws org.apache.thrift.TException {
-        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+      public KVStoreStatus getResult() throws TException {
+        if (getState() != State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
@@ -360,7 +387,7 @@ public class KeyValueStore {
       }
     }
 
-    public void RemoveFromList(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<RemoveFromList_call> resultHandler) throws org.apache.thrift.TException {
+    public void RemoveFromList(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<RemoveFromList_call> resultHandler) throws TException {
       checkReady();
       RemoveFromList_call method_call = new RemoveFromList_call(key, value, clientid, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
@@ -371,14 +398,14 @@ public class KeyValueStore {
       private String key;
       private String value;
       private String clientid;
-      public RemoveFromList_call(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<RemoveFromList_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public RemoveFromList_call(String key, String value, String clientid, org.apache.thrift.async.AsyncMethodCallback<RemoveFromList_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.key = key;
         this.value = value;
         this.clientid = clientid;
       }
 
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("RemoveFromList", org.apache.thrift.protocol.TMessageType.CALL, 0));
         RemoveFromList_args args = new RemoveFromList_args();
         args.setKey(key);
@@ -388,13 +415,45 @@ public class KeyValueStore {
         prot.writeMessageEnd();
       }
 
-      public KVStoreStatus getResult() throws org.apache.thrift.TException {
-        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+      public KVStoreStatus getResult() throws TException {
+        if (getState() != State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
         return (new Client(prot)).recv_RemoveFromList();
+      }
+    }
+
+    public void Clock(long atLeast, org.apache.thrift.async.AsyncMethodCallback<Clock_call> resultHandler) throws TException {
+      checkReady();
+      Clock_call method_call = new Clock_call(atLeast, resultHandler, this, ___protocolFactory, ___transport);
+      this.___currentMethod = method_call;
+      ___manager.call(method_call);
+    }
+
+    public static class Clock_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private long atLeast;
+      public Clock_call(long atLeast, org.apache.thrift.async.AsyncMethodCallback<Clock_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws TException {
+        super(client, protocolFactory, transport, resultHandler, false);
+        this.atLeast = atLeast;
+      }
+
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws TException {
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("Clock", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        Clock_args args = new Clock_args();
+        args.setAtLeast(atLeast);
+        args.write(prot);
+        prot.writeMessageEnd();
+      }
+
+      public ClockResponse getResult() throws TException {
+        if (getState() != State.RESPONSE_READ) {
+          throw new IllegalStateException("Method call not finished!");
+        }
+        org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
+        org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
+        return (new Client(prot)).recv_Clock();
       }
     }
 
@@ -416,6 +475,7 @@ public class KeyValueStore {
       processMap.put("Put", new Put());
       processMap.put("AddToList", new AddToList());
       processMap.put("RemoveFromList", new RemoveFromList());
+      processMap.put("Clock", new Clock());
       return processMap;
     }
 
@@ -432,7 +492,7 @@ public class KeyValueStore {
         return false;
       }
 
-      public Get_result getResult(I iface, Get_args args) throws org.apache.thrift.TException {
+      public Get_result getResult(I iface, Get_args args) throws TException {
         Get_result result = new Get_result();
         result.success = iface.Get(args.key);
         return result;
@@ -452,7 +512,7 @@ public class KeyValueStore {
         return false;
       }
 
-      public GetList_result getResult(I iface, GetList_args args) throws org.apache.thrift.TException {
+      public GetList_result getResult(I iface, GetList_args args) throws TException {
         GetList_result result = new GetList_result();
         result.success = iface.GetList(args.key);
         return result;
@@ -472,7 +532,7 @@ public class KeyValueStore {
         return false;
       }
 
-      public Put_result getResult(I iface, Put_args args) throws org.apache.thrift.TException {
+      public Put_result getResult(I iface, Put_args args) throws TException {
         Put_result result = new Put_result();
         result.success = iface.Put(args.key, args.value, args.clientid);
         return result;
@@ -492,7 +552,7 @@ public class KeyValueStore {
         return false;
       }
 
-      public AddToList_result getResult(I iface, AddToList_args args) throws org.apache.thrift.TException {
+      public AddToList_result getResult(I iface, AddToList_args args) throws TException {
         AddToList_result result = new AddToList_result();
         result.success = iface.AddToList(args.key, args.value, args.clientid);
         return result;
@@ -512,9 +572,29 @@ public class KeyValueStore {
         return false;
       }
 
-      public RemoveFromList_result getResult(I iface, RemoveFromList_args args) throws org.apache.thrift.TException {
+      public RemoveFromList_result getResult(I iface, RemoveFromList_args args) throws TException {
         RemoveFromList_result result = new RemoveFromList_result();
         result.success = iface.RemoveFromList(args.key, args.value, args.clientid);
+        return result;
+      }
+    }
+
+    public static class Clock<I extends Iface> extends org.apache.thrift.ProcessFunction<I, Clock_args> {
+      public Clock() {
+        super("Clock");
+      }
+
+      public Clock_args getEmptyArgsInstance() {
+        return new Clock_args();
+      }
+
+      protected boolean isOneway() {
+        return false;
+      }
+
+      public Clock_result getResult(I iface, Clock_args args) throws TException {
+        Clock_result result = new Clock_result();
+        result.success = iface.Clock(args.atLeast);
         return result;
       }
     }
@@ -744,11 +824,11 @@ public class KeyValueStore {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -768,7 +848,7 @@ public class KeyValueStore {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -776,7 +856,7 @@ public class KeyValueStore {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -784,7 +864,7 @@ public class KeyValueStore {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -797,7 +877,7 @@ public class KeyValueStore {
 
     private static class Get_argsStandardScheme extends StandardScheme<Get_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, Get_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, Get_args struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -826,7 +906,7 @@ public class KeyValueStore {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, Get_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, Get_args struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -850,7 +930,7 @@ public class KeyValueStore {
     private static class Get_argsTupleScheme extends TupleScheme<Get_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, Get_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, Get_args struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetKey()) {
@@ -863,7 +943,7 @@ public class KeyValueStore {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, Get_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, Get_args struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -1098,11 +1178,11 @@ public class KeyValueStore {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -1122,7 +1202,7 @@ public class KeyValueStore {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
       if (success != null) {
@@ -1133,7 +1213,7 @@ public class KeyValueStore {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1141,7 +1221,7 @@ public class KeyValueStore {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1154,7 +1234,7 @@ public class KeyValueStore {
 
     private static class Get_resultStandardScheme extends StandardScheme<Get_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, Get_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, Get_result struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1184,7 +1264,7 @@ public class KeyValueStore {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, Get_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, Get_result struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1208,7 +1288,7 @@ public class KeyValueStore {
     private static class Get_resultTupleScheme extends TupleScheme<Get_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, Get_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, Get_result struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -1221,7 +1301,7 @@ public class KeyValueStore {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, Get_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, Get_result struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -1457,11 +1537,11 @@ public class KeyValueStore {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -1481,7 +1561,7 @@ public class KeyValueStore {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -1489,7 +1569,7 @@ public class KeyValueStore {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1497,7 +1577,7 @@ public class KeyValueStore {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1510,7 +1590,7 @@ public class KeyValueStore {
 
     private static class GetList_argsStandardScheme extends StandardScheme<GetList_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, GetList_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, GetList_args struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1539,7 +1619,7 @@ public class KeyValueStore {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, GetList_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, GetList_args struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1563,7 +1643,7 @@ public class KeyValueStore {
     private static class GetList_argsTupleScheme extends TupleScheme<GetList_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, GetList_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, GetList_args struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetKey()) {
@@ -1576,7 +1656,7 @@ public class KeyValueStore {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, GetList_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, GetList_args struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -1811,11 +1891,11 @@ public class KeyValueStore {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -1835,7 +1915,7 @@ public class KeyValueStore {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
       if (success != null) {
@@ -1846,7 +1926,7 @@ public class KeyValueStore {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1854,7 +1934,7 @@ public class KeyValueStore {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -1867,7 +1947,7 @@ public class KeyValueStore {
 
     private static class GetList_resultStandardScheme extends StandardScheme<GetList_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, GetList_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, GetList_result struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1897,7 +1977,7 @@ public class KeyValueStore {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, GetList_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, GetList_result struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1921,7 +2001,7 @@ public class KeyValueStore {
     private static class GetList_resultTupleScheme extends TupleScheme<GetList_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, GetList_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, GetList_result struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -1934,7 +2014,7 @@ public class KeyValueStore {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, GetList_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, GetList_result struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -2308,11 +2388,11 @@ public class KeyValueStore {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -2348,7 +2428,7 @@ public class KeyValueStore {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -2356,7 +2436,7 @@ public class KeyValueStore {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -2364,7 +2444,7 @@ public class KeyValueStore {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -2377,7 +2457,7 @@ public class KeyValueStore {
 
     private static class Put_argsStandardScheme extends StandardScheme<Put_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, Put_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, Put_args struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2422,7 +2502,7 @@ public class KeyValueStore {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, Put_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, Put_args struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2456,7 +2536,7 @@ public class KeyValueStore {
     private static class Put_argsTupleScheme extends TupleScheme<Put_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, Put_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, Put_args struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetKey()) {
@@ -2481,7 +2561,7 @@ public class KeyValueStore {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, Put_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, Put_args struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(3);
         if (incoming.get(0)) {
@@ -2740,11 +2820,11 @@ public class KeyValueStore {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -2764,7 +2844,7 @@ public class KeyValueStore {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -2772,7 +2852,7 @@ public class KeyValueStore {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -2780,7 +2860,7 @@ public class KeyValueStore {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -2793,7 +2873,7 @@ public class KeyValueStore {
 
     private static class Put_resultStandardScheme extends StandardScheme<Put_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, Put_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, Put_result struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2822,7 +2902,7 @@ public class KeyValueStore {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, Put_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, Put_result struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2846,7 +2926,7 @@ public class KeyValueStore {
     private static class Put_resultTupleScheme extends TupleScheme<Put_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, Put_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, Put_result struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -2859,7 +2939,7 @@ public class KeyValueStore {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, Put_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, Put_result struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -3232,11 +3312,11 @@ public class KeyValueStore {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -3272,7 +3352,7 @@ public class KeyValueStore {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -3280,7 +3360,7 @@ public class KeyValueStore {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -3288,7 +3368,7 @@ public class KeyValueStore {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -3301,7 +3381,7 @@ public class KeyValueStore {
 
     private static class AddToList_argsStandardScheme extends StandardScheme<AddToList_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, AddToList_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, AddToList_args struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -3346,7 +3426,7 @@ public class KeyValueStore {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, AddToList_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, AddToList_args struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -3380,7 +3460,7 @@ public class KeyValueStore {
     private static class AddToList_argsTupleScheme extends TupleScheme<AddToList_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, AddToList_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, AddToList_args struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetKey()) {
@@ -3405,7 +3485,7 @@ public class KeyValueStore {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, AddToList_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, AddToList_args struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(3);
         if (incoming.get(0)) {
@@ -3664,11 +3744,11 @@ public class KeyValueStore {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -3688,7 +3768,7 @@ public class KeyValueStore {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -3696,7 +3776,7 @@ public class KeyValueStore {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -3704,7 +3784,7 @@ public class KeyValueStore {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -3717,7 +3797,7 @@ public class KeyValueStore {
 
     private static class AddToList_resultStandardScheme extends StandardScheme<AddToList_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, AddToList_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, AddToList_result struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -3746,7 +3826,7 @@ public class KeyValueStore {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, AddToList_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, AddToList_result struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -3770,7 +3850,7 @@ public class KeyValueStore {
     private static class AddToList_resultTupleScheme extends TupleScheme<AddToList_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, AddToList_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, AddToList_result struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -3783,7 +3863,7 @@ public class KeyValueStore {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, AddToList_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, AddToList_result struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -4156,11 +4236,11 @@ public class KeyValueStore {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
     }
 
@@ -4196,7 +4276,7 @@ public class KeyValueStore {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -4204,7 +4284,7 @@ public class KeyValueStore {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -4212,7 +4292,7 @@ public class KeyValueStore {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -4225,7 +4305,7 @@ public class KeyValueStore {
 
     private static class RemoveFromList_argsStandardScheme extends StandardScheme<RemoveFromList_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, RemoveFromList_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, RemoveFromList_args struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -4270,7 +4350,7 @@ public class KeyValueStore {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, RemoveFromList_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, RemoveFromList_args struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -4304,7 +4384,7 @@ public class KeyValueStore {
     private static class RemoveFromList_argsTupleScheme extends TupleScheme<RemoveFromList_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, RemoveFromList_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, RemoveFromList_args struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetKey()) {
@@ -4329,7 +4409,7 @@ public class KeyValueStore {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, RemoveFromList_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, RemoveFromList_args struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(3);
         if (incoming.get(0)) {
@@ -4588,11 +4668,11 @@ public class KeyValueStore {
       return _Fields.findByThriftId(fieldId);
     }
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
       schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
       schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
       }
 
@@ -4612,7 +4692,7 @@ public class KeyValueStore {
       return sb.toString();
     }
 
-    public void validate() throws org.apache.thrift.TException {
+    public void validate() throws TException {
       // check for required fields
       // check for sub-struct validity
     }
@@ -4620,7 +4700,7 @@ public class KeyValueStore {
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
       try {
         write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -4628,7 +4708,7 @@ public class KeyValueStore {
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
+      } catch (TException te) {
         throw new java.io.IOException(te);
       }
     }
@@ -4641,7 +4721,7 @@ public class KeyValueStore {
 
     private static class RemoveFromList_resultStandardScheme extends StandardScheme<RemoveFromList_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, RemoveFromList_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, RemoveFromList_result struct) throws TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -4670,7 +4750,7 @@ public class KeyValueStore {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, RemoveFromList_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, RemoveFromList_result struct) throws TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -4694,7 +4774,7 @@ public class KeyValueStore {
     private static class RemoveFromList_resultTupleScheme extends TupleScheme<RemoveFromList_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, RemoveFromList_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, RemoveFromList_result struct) throws TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -4707,11 +4787,722 @@ public class KeyValueStore {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, RemoveFromList_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, RemoveFromList_result struct) throws TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
           struct.success = KVStoreStatus.findByValue(iprot.readI32());
+          struct.setSuccessIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class Clock_args implements org.apache.thrift.TBase<Clock_args, Clock_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Clock_args");
+
+    private static final org.apache.thrift.protocol.TField AT_LEAST_FIELD_DESC = new org.apache.thrift.protocol.TField("atLeast", org.apache.thrift.protocol.TType.I64, (short)1);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new Clock_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new Clock_argsTupleSchemeFactory());
+    }
+
+    public long atLeast; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      AT_LEAST((short)1, "atLeast");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 1: // AT_LEAST
+            return AT_LEAST;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    private static final int __ATLEAST_ISSET_ID = 0;
+    private byte __isset_bitfield = 0;
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.AT_LEAST, new org.apache.thrift.meta_data.FieldMetaData("atLeast", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64          , "long")));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Clock_args.class, metaDataMap);
+    }
+
+    public Clock_args() {
+    }
+
+    public Clock_args(
+      long atLeast)
+    {
+      this();
+      this.atLeast = atLeast;
+      setAtLeastIsSet(true);
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public Clock_args(Clock_args other) {
+      __isset_bitfield = other.__isset_bitfield;
+      this.atLeast = other.atLeast;
+    }
+
+    public Clock_args deepCopy() {
+      return new Clock_args(this);
+    }
+
+    @Override
+    public void clear() {
+      setAtLeastIsSet(false);
+      this.atLeast = 0;
+    }
+
+    public long getAtLeast() {
+      return this.atLeast;
+    }
+
+    public Clock_args setAtLeast(long atLeast) {
+      this.atLeast = atLeast;
+      setAtLeastIsSet(true);
+      return this;
+    }
+
+    public void unsetAtLeast() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __ATLEAST_ISSET_ID);
+    }
+
+    /** Returns true if field atLeast is set (has been assigned a value) and false otherwise */
+    public boolean isSetAtLeast() {
+      return EncodingUtils.testBit(__isset_bitfield, __ATLEAST_ISSET_ID);
+    }
+
+    public void setAtLeastIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __ATLEAST_ISSET_ID, value);
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case AT_LEAST:
+        if (value == null) {
+          unsetAtLeast();
+        } else {
+          setAtLeast((Long)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case AT_LEAST:
+        return Long.valueOf(getAtLeast());
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case AT_LEAST:
+        return isSetAtLeast();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof Clock_args)
+        return this.equals((Clock_args)that);
+      return false;
+    }
+
+    public boolean equals(Clock_args that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_atLeast = true;
+      boolean that_present_atLeast = true;
+      if (this_present_atLeast || that_present_atLeast) {
+        if (!(this_present_atLeast && that_present_atLeast))
+          return false;
+        if (this.atLeast != that.atLeast)
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(Clock_args other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      Clock_args typedOther = (Clock_args)other;
+
+      lastComparison = Boolean.valueOf(isSetAtLeast()).compareTo(typedOther.isSetAtLeast());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetAtLeast()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.atLeast, typedOther.atLeast);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+    }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("Clock_args(");
+      boolean first = true;
+
+      sb.append("atLeast:");
+      sb.append(this.atLeast);
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws TException {
+      // check for required fields
+      // check for sub-struct validity
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bitfield = 0;
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class Clock_argsStandardSchemeFactory implements SchemeFactory {
+      public Clock_argsStandardScheme getScheme() {
+        return new Clock_argsStandardScheme();
+      }
+    }
+
+    private static class Clock_argsStandardScheme extends StandardScheme<Clock_args> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, Clock_args struct) throws TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 1: // AT_LEAST
+              if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+                struct.atLeast = iprot.readI64();
+                struct.setAtLeastIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, Clock_args struct) throws TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        oprot.writeFieldBegin(AT_LEAST_FIELD_DESC);
+        oprot.writeI64(struct.atLeast);
+        oprot.writeFieldEnd();
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class Clock_argsTupleSchemeFactory implements SchemeFactory {
+      public Clock_argsTupleScheme getScheme() {
+        return new Clock_argsTupleScheme();
+      }
+    }
+
+    private static class Clock_argsTupleScheme extends TupleScheme<Clock_args> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, Clock_args struct) throws TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetAtLeast()) {
+          optionals.set(0);
+        }
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetAtLeast()) {
+          oprot.writeI64(struct.atLeast);
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, Clock_args struct) throws TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(1);
+        if (incoming.get(0)) {
+          struct.atLeast = iprot.readI64();
+          struct.setAtLeastIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class Clock_result implements org.apache.thrift.TBase<Clock_result, Clock_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Clock_result");
+
+    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRUCT, (short)0);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new Clock_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new Clock_resultTupleSchemeFactory());
+    }
+
+    public ClockResponse success; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      SUCCESS((short)0, "success");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 0: // SUCCESS
+            return SUCCESS;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ClockResponse.class)));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Clock_result.class, metaDataMap);
+    }
+
+    public Clock_result() {
+    }
+
+    public Clock_result(
+      ClockResponse success)
+    {
+      this();
+      this.success = success;
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public Clock_result(Clock_result other) {
+      if (other.isSetSuccess()) {
+        this.success = new ClockResponse(other.success);
+      }
+    }
+
+    public Clock_result deepCopy() {
+      return new Clock_result(this);
+    }
+
+    @Override
+    public void clear() {
+      this.success = null;
+    }
+
+    public ClockResponse getSuccess() {
+      return this.success;
+    }
+
+    public Clock_result setSuccess(ClockResponse success) {
+      this.success = success;
+      return this;
+    }
+
+    public void unsetSuccess() {
+      this.success = null;
+    }
+
+    /** Returns true if field success is set (has been assigned a value) and false otherwise */
+    public boolean isSetSuccess() {
+      return this.success != null;
+    }
+
+    public void setSuccessIsSet(boolean value) {
+      if (!value) {
+        this.success = null;
+      }
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case SUCCESS:
+        if (value == null) {
+          unsetSuccess();
+        } else {
+          setSuccess((ClockResponse)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case SUCCESS:
+        return getSuccess();
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case SUCCESS:
+        return isSetSuccess();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof Clock_result)
+        return this.equals((Clock_result)that);
+      return false;
+    }
+
+    public boolean equals(Clock_result that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_success = true && this.isSetSuccess();
+      boolean that_present_success = true && that.isSetSuccess();
+      if (this_present_success || that_present_success) {
+        if (!(this_present_success && that_present_success))
+          return false;
+        if (!this.success.equals(that.success))
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(Clock_result other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      Clock_result typedOther = (Clock_result)other;
+
+      lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetSuccess()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.success, typedOther.success);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+      }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("Clock_result(");
+      boolean first = true;
+
+      sb.append("success:");
+      if (this.success == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.success);
+      }
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws TException {
+      // check for required fields
+      // check for sub-struct validity
+      if (success != null) {
+        success.validate();
+      }
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class Clock_resultStandardSchemeFactory implements SchemeFactory {
+      public Clock_resultStandardScheme getScheme() {
+        return new Clock_resultStandardScheme();
+      }
+    }
+
+    private static class Clock_resultStandardScheme extends StandardScheme<Clock_result> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, Clock_result struct) throws TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 0: // SUCCESS
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+                struct.success = new ClockResponse();
+                struct.success.read(iprot);
+                struct.setSuccessIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, Clock_result struct) throws TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        if (struct.success != null) {
+          oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
+          struct.success.write(oprot);
+          oprot.writeFieldEnd();
+        }
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class Clock_resultTupleSchemeFactory implements SchemeFactory {
+      public Clock_resultTupleScheme getScheme() {
+        return new Clock_resultTupleScheme();
+      }
+    }
+
+    private static class Clock_resultTupleScheme extends TupleScheme<Clock_result> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, Clock_result struct) throws TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetSuccess()) {
+          optionals.set(0);
+        }
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetSuccess()) {
+          struct.success.write(oprot);
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, Clock_result struct) throws TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(1);
+        if (incoming.get(0)) {
+          struct.success = new ClockResponse();
+          struct.success.read(iprot);
           struct.setSuccessIsSet(true);
         }
       }

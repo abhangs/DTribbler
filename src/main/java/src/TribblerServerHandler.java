@@ -1,10 +1,7 @@
 package src;
 
 
-import include.KeyValueStore.GetListResponse;
-import include.KeyValueStore.GetResponse;
-import include.KeyValueStore.KVStoreStatus;
-import include.KeyValueStore.KeyValueStore;
+import include.KeyValueStore.*;
 import include.Tribbler.SubscriptionResponse;
 import include.Tribbler.TribbleResponse;
 import include.Tribbler.TribbleStatus;
@@ -200,6 +197,13 @@ public class TribblerServerHandler implements Tribbler.Iface, KeyValueStore.Ifac
         transport.close();
 
         return  storeStatus;
+    }
+
+
+    //Remove this, instead Get a proxy object (client) and perform all the operations using that client
+    @Override
+    public ClockResponse Clock(long atLeast) throws TException {
+        return null;
     }
 
 

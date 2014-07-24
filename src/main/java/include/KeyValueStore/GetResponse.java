@@ -10,19 +10,29 @@ import org.apache.thrift.scheme.StandardScheme;
 
 import org.apache.thrift.scheme.TupleScheme;
 import org.apache.thrift.protocol.TTupleProtocol;
-
+import org.apache.thrift.protocol.TProtocolException;
+import org.apache.thrift.EncodingUtils;
+import org.apache.thrift.TException;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.EnumMap;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.EnumSet;
 import java.util.Collections;
 import java.util.BitSet;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Return type for a Get(key) RPC call to the storage server.
  */
 public class GetResponse implements org.apache.thrift.TBase<GetResponse, GetResponse._Fields>, java.io.Serializable, Cloneable {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("include.KeyValueStore.GetResponse");
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("GetResponse");
 
   private static final org.apache.thrift.protocol.TField STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("status", org.apache.thrift.protocol.TType.I32, (short)1);
   private static final org.apache.thrift.protocol.TField VALUE_FIELD_DESC = new org.apache.thrift.protocol.TField("value", org.apache.thrift.protocol.TType.STRING, (short)2);
@@ -329,17 +339,17 @@ public class GetResponse implements org.apache.thrift.TBase<GetResponse, GetResp
     return _Fields.findByThriftId(fieldId);
   }
 
-  public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+  public void read(org.apache.thrift.protocol.TProtocol iprot) throws TException {
     schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
   }
 
-  public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+  public void write(org.apache.thrift.protocol.TProtocol oprot) throws TException {
     schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
   }
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("include.KeyValueStore.GetResponse(");
+    StringBuilder sb = new StringBuilder("GetResponse(");
     boolean first = true;
 
     sb.append("status:");
@@ -361,7 +371,7 @@ public class GetResponse implements org.apache.thrift.TBase<GetResponse, GetResp
     return sb.toString();
   }
 
-  public void validate() throws org.apache.thrift.TException {
+  public void validate() throws TException {
     // check for required fields
     // check for sub-struct validity
   }
@@ -369,7 +379,7 @@ public class GetResponse implements org.apache.thrift.TBase<GetResponse, GetResp
   private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
     try {
       write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-    } catch (org.apache.thrift.TException te) {
+    } catch (TException te) {
       throw new java.io.IOException(te);
     }
   }
@@ -377,7 +387,7 @@ public class GetResponse implements org.apache.thrift.TBase<GetResponse, GetResp
   private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
     try {
       read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-    } catch (org.apache.thrift.TException te) {
+    } catch (TException te) {
       throw new java.io.IOException(te);
     }
   }
@@ -390,7 +400,7 @@ public class GetResponse implements org.apache.thrift.TBase<GetResponse, GetResp
 
   private static class GetResponseStandardScheme extends StandardScheme<GetResponse> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, GetResponse struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, GetResponse struct) throws TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -427,7 +437,7 @@ public class GetResponse implements org.apache.thrift.TBase<GetResponse, GetResp
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, GetResponse struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, GetResponse struct) throws TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
@@ -456,7 +466,7 @@ public class GetResponse implements org.apache.thrift.TBase<GetResponse, GetResp
   private static class GetResponseTupleScheme extends TupleScheme<GetResponse> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, GetResponse struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, GetResponse struct) throws TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       BitSet optionals = new BitSet();
       if (struct.isSetStatus()) {
@@ -475,7 +485,7 @@ public class GetResponse implements org.apache.thrift.TBase<GetResponse, GetResp
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, GetResponse struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, GetResponse struct) throws TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       BitSet incoming = iprot.readBitSet(2);
       if (incoming.get(0)) {
