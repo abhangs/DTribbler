@@ -67,36 +67,46 @@
       <file leaf-file-name="KVStoreServerHandler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="21" selection-start="1749" selection-end="1749" vertical-scroll-proportion="1.5815384" vertical-offset="295" max-vertical-offset="2970">
+            <state line="5" column="0" selection-start="117" selection-end="117" vertical-scroll-proportion="0.20769231" vertical-offset="0" max-vertical-offset="4752">
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="e#4883#4891#0" expanded="true" />
+                <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KVServerStatus.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/KVServerStatus.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="9" selection-start="98" selection-end="98" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="351">
+            <state line="17" column="11" selection-start="638" selection-end="638" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="837">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClockResponse.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/ClockResponse.java">
+      <file leaf-file-name="Utilities.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/src/Utilities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="3" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0" vertical-offset="4509" max-vertical-offset="14850">
-              <folding />
+            <state line="11" column="39" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0" vertical-offset="196" max-vertical-offset="864">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#382#383#0" expanded="true" />
+                <element signature="e#419#420#0" expanded="true" />
+                <element signature="e#471#472#0" expanded="true" />
+                <element signature="e#512#513#0" expanded="true" />
+                <element signature="e#566#567#0" expanded="true" />
+                <element signature="e#608#609#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KeyValueStore.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/KeyValueStore.java">
+      <file leaf-file-name="KVStoreStatus.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/KVStoreStatus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="13" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="144774">
+            <state line="15" column="12" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="130" max-vertical-offset="1728">
               <folding />
             </state>
           </provider>
@@ -105,7 +115,7 @@
       <file leaf-file-name="GetListResponse.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/GetListResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="13" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0" vertical-offset="81" max-vertical-offset="14175">
+            <state line="33" column="13" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0" vertical-offset="891" max-vertical-offset="15147">
               <folding />
             </state>
           </provider>
@@ -114,7 +124,7 @@
       <file leaf-file-name="SubscriptionResponse.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/SubscriptionResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="13" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="14202">
+            <state line="26" column="13" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="14958">
               <folding />
             </state>
           </provider>
@@ -132,7 +142,7 @@
       <file leaf-file-name="Tribbler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/Tribbler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="23" selection-start="2365" selection-end="2365" vertical-scroll-proportion="0.0" vertical-offset="1620" max-vertical-offset="157950">
+            <state line="60" column="23" selection-start="2365" selection-end="2365" vertical-scroll-proportion="0.0" vertical-offset="1620" max-vertical-offset="162351">
               <folding />
             </state>
           </provider>
@@ -166,13 +176,14 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/include/KVStoreStatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/src/TribbleUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/include/Tribbler/TribbleStatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/include/Tribbler/Tribble.java" />
         <option value="$PROJECT_DIR$/src/main/java/include/KeyValueStore/KVServerStatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/src/TribblerServerHandler.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/src/Utilities.java" />
         <option value="$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java" />
       </list>
     </option>
@@ -180,7 +191,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1552" />
+    <option name="width" value="1548" />
     <option name="height" value="842" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -211,6 +222,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -316,45 +328,10 @@
               <option name="myItemId" value="include" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tribbler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DTribbler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DTribbler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KeyValueStore" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -555,6 +532,25 @@
       <option name="trusted" value="true" />
       <method />
     </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="GoTestConfiguration" factoryName="Go Test">
       <option name="name" value="Go Test" />
       <option name="saveOutputToFile" value="false" />
@@ -574,25 +570,6 @@
       <option name="testBeforeBenchmark" value="false" />
       <option name="goVetEnabled" value="false" />
       <module name="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -643,11 +620,12 @@
       <updated>1405307798366</updated>
       <workItem from="1405307800676" duration="5237000" />
       <workItem from="1406094289274" duration="10680000" />
+      <workItem from="1406247679501" duration="7960000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15917000" />
+    <option name="totallyTimeSpent" value="23877000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -670,7 +648,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1552" height="842" extended-state="7" />
+    <frame x="-8" y="-8" width="1548" height="842" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -678,7 +656,6 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -687,18 +664,19 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22957747" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24966533" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24966443" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18309858" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -722,6 +700,80 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="21" selection-start="1749" selection-end="1749" vertical-scroll-proportion="0.0" vertical-offset="484" max-vertical-offset="2970">
+          <folding>
+            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#4883#4891#0" expanded="true" />
+            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/KVServerStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="9" selection-start="98" selection-end="98" vertical-scroll-proportion="0.0" vertical-offset="189" max-vertical-offset="351">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/ClockResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="3" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="15795">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/KeyValueStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="13" selection-start="910" selection-end="910" vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="149013">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/GetListResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="13" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0" vertical-offset="891" max-vertical-offset="15147">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/SubscriptionResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="13" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="14958">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/Tribble.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="13" selection-start="707" selection-end="707" vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="17199">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/Tribbler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="23" selection-start="2365" selection-end="2365" vertical-scroll-proportion="0.0" vertical-offset="1620" max-vertical-offset="162351">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/TribbleResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="13" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="14985">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/TribbleStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="23" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1728">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/src/TribblerServerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="197" column="62" selection-start="6749" selection-end="6749" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5697">
@@ -736,7 +788,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="8" selection-start="377" selection-end="389" vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="1134">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#4883#4891#0" expanded="true" />
+            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -772,13 +826,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/TribbleStatus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="23" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1728">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="17" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="189">
           <folding />
         </state>
       </provider>
@@ -865,11 +912,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/KVStoreStatus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="21" selection-start="1749" selection-end="1749" vertical-scroll-proportion="1.5815384" vertical-offset="295" max-vertical-offset="2970">
+        <state line="15" column="12" selection-start="357" selection-end="357" vertical-scroll-proportion="0.0" vertical-offset="130" max-vertical-offset="1728">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="11" selection-start="638" selection-end="638" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="837">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/src/Utilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="39" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0" vertical-offset="196" max-vertical-offset="864">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#382#383#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#566#567#0" expanded="true" />
+            <element signature="e#608#609#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="117" selection-end="117" vertical-scroll-proportion="0.20769231" vertical-offset="0" max-vertical-offset="4752">
+          <folding>
+            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#4883#4891#0" expanded="true" />
+            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
           </folding>
         </state>
       </provider>
