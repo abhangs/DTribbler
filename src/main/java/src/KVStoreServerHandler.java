@@ -63,7 +63,9 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
 
     private KVStoreStatus SyncDataFromServer(String serverAddress, int serverPort) {
 
-        GetListResponse listResponse = RemoteGetList(serverAddress,serverPort,Utilities.getUserListPrefix());
+        GetListResponse listResponse = RemoteGetList(serverAddress,serverPort,Utilities.getServerAllKeysPrefix());
+
+        //need to check if this will correctly handle sets
 
         try{
             for(String item:listResponse.getValues())
@@ -192,6 +194,8 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
             return GetAllKeys();
         }
 
+        
+    
        return null;
     }
 
