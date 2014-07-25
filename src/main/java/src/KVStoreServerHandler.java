@@ -120,7 +120,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
         {
             if(_serverCommandPrefixes.contains(key))
             {
-                return ProcessCommand(key);
+                return GetListReponse.class.cast(ProcessCommand(key));
             }
         }
 
@@ -187,7 +187,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
     }
 
 
-    private GetListResponse ProcessCommand(String key) {
+    private Object ProcessCommand(String key) {
 
         if(key==Utilities.getServerAllKeysPrefix())
         {
