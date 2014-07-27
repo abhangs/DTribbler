@@ -67,23 +67,19 @@
       <file leaf-file-name="KVStoreServerHandler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="159" column="0" selection-start="4574" selection-end="4574" vertical-scroll-proportion="0.33692306" vertical-offset="1698" max-vertical-offset="2376">
+            <state line="127" column="28" selection-start="3908" selection-end="3908" vertical-scroll-proportion="0.62098503" vertical-offset="1708" max-vertical-offset="4077">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
-                <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
-                <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
-                <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
-                <element signature="e#5036#5044#0" expanded="true" />
-                <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="e#5129#5137#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -670,12 +666,12 @@
       <updated>1405307798366</updated>
       <workItem from="1405307800676" duration="5237000" />
       <workItem from="1406094289274" duration="10680000" />
-      <workItem from="1406247679501" duration="15675000" />
+      <workItem from="1406247679501" duration="16190000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31592000" />
+    <option name="totallyTimeSpent" value="32107000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -714,7 +710,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25915492" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2577465" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -758,17 +754,13 @@
             <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="e#5036#5044#0" expanded="true" />
-            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#5129#5137#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -854,17 +846,13 @@
             <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="e#5036#5044#0" expanded="true" />
-            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#5129#5137#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1021,23 +1009,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="0" selection-start="4574" selection-end="4574" vertical-scroll-proportion="0.33692306" vertical-offset="1698" max-vertical-offset="2376">
+        <state line="127" column="28" selection-start="3908" selection-end="3908" vertical-scroll-proportion="0.62098503" vertical-offset="1708" max-vertical-offset="4077">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="e#5036#5044#0" expanded="true" />
-            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#5129#5137#0" expanded="true" />
           </folding>
         </state>
       </provider>

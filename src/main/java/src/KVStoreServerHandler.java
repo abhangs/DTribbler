@@ -68,7 +68,9 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
 
     private KVStoreStatus SyncDataFromServer(String serverAddress, int serverPort) {
 
-        GetListResponse listResponse = RemoteGetList(serverAddress,serverPort,Utilities.getUserListPrefix());
+        GetListResponse listResponse = RemoteGetList(serverAddress,serverPort,Utilities.getServerAllKeysPrefix());
+
+        //need to check if this will correctly handle sets
 
         try{
             for(String item:listResponse.getValues())
@@ -121,7 +123,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
         {
             if(_serverCommandPrefixes.contains(key))
             {
-                return ProcessCommand(key);
+                return GetListResponse.class.cast(ProcessCommand(key));
             }
         }
 
@@ -189,13 +191,15 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
         return response;
     }
 
-    private GetListResponse ProcessCommand(String key) {
+    private Object ProcessCommand(String key) {
 
         if(key==Utilities.getServerAllKeysPrefix())
         {
             return GetAllKeys();
         }
 
+        
+    
        return null;
     }
 
