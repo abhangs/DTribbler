@@ -13,7 +13,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
     //variable for clock
     private long _atLeast;
     private String _serverID;
-    private KVServerStatus _serverStatus;
+    private static KVServerStatus _serverStatus;
     private HashMap<String,String> _backendServersQueue;
     private HashSet<String> _runningServerCollection;
     private HashSet<String> _deadServerCollection;
@@ -49,7 +49,12 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
         _serverCommandPrefixes.add(Utilities.getServerAllKeysPrefix());
 
         Initialize();
+
+        //check initialize value and call the keeper joincluster with appropriate message
+        //then change server status to running
+
     }
+
 
     public boolean Initialize()
     {
@@ -81,8 +86,6 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
 
 
     }
-
-
 
     private boolean SyncServer()
     {
@@ -149,18 +152,19 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
 
     //In RPC calls if a server is dead then remove it from the runningServersQueue
 
-    public synchronized GetResponse RemoteGet(String serverAddress,int serverPort, String key)
+    public  GetResponse RemoteGet(String serverAddress,int serverPort, String key)
     {
         return null;
     }
 
-    public synchronized GetListResponse RemoteGetList(String serverAddress, int serverPort, String key) {
+    public  GetListResponse RemoteGetList(String serverAddress, int serverPort, String key) {
         return null;
     }
 
     //functions to perform various Server processes such synching, returning server status
-    private synchronized GetListResponse GetAllKeys()
+    private GetListResponse GetAllKeys()
     {
+        _serverStatus = KVServerStatus.Busy;
         Set<String> allKeys = _jedis.keys("*");
         GetListResponse response = new GetListResponse();
         ArrayList<String> keyValues = new ArrayList<String>();
@@ -175,15 +179,15 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
 
             response.setValues(keyValues);
             response.setStatus(KVStoreStatus.OK);
+
         }catch (Exception ex)
         {
             response.setValues(null);
             response.setStatus(KVStoreStatus.INTERNAL_FAILURE);
         }
-
+        _serverStatus = KVServerStatus.Running;
         return response;
     }
-
 
     private GetListResponse ProcessCommand(String key) {
 
