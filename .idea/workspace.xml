@@ -67,19 +67,23 @@
       <file leaf-file-name="KVStoreServerHandler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="28" selection-start="3908" selection-end="3908" vertical-scroll-proportion="0.62098503" vertical-offset="1708" max-vertical-offset="4077">
+            <state line="455" column="31" selection-start="14646" selection-end="14646" vertical-scroll-proportion="0.74615383" vertical-offset="2377" max-vertical-offset="3402">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#Put#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
                 <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
-                <element signature="e#5129#5137#0" expanded="true" />
+                <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="e#15111#15119#0" expanded="true" />
+                <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -120,15 +124,6 @@
                 <element signature="e#726#727#0" expanded="false" />
                 <element signature="e#748#749#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetListResponse.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/GetListResponse.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="13" selection-start="984" selection-end="984" vertical-scroll-proportion="0.0" vertical-offset="891" max-vertical-offset="15147">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -196,6 +191,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/src/Utilities.java" />
         <option value="$PROJECT_DIR$/src/main/java/include/KeyValueStore/KVServerStatus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/src/TempClass.java" />
         <option value="$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java" />
       </list>
     </option>
@@ -391,6 +387,8 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="SearchEverywhereHistory" value="" />
+    <property name="recentsLimit" value="5" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -403,7 +401,29 @@
       <recent name="D:\TSS_28Feb2013\DTribbler\src\main" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.TempClass">
+    <configuration default="false" name="TempClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="src.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="src.TempClass" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="DTribbler" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <option name="name" value="Go application" />
       <option name="saveOutputToFile" value="false" />
@@ -652,7 +672,14 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <list size="0" />
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.TempClass" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.TempClass" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -666,12 +693,12 @@
       <updated>1405307798366</updated>
       <workItem from="1405307800676" duration="5237000" />
       <workItem from="1406094289274" duration="10680000" />
-      <workItem from="1406247679501" duration="16190000" />
+      <workItem from="1406247679501" duration="25104000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32107000" />
+    <option name="totallyTimeSpent" value="41021000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -695,7 +722,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1552" height="842" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -710,20 +737,48 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2577465" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22394367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2416332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2416332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2416332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22394367" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USERS">
@@ -751,16 +806,20 @@
         <state line="49" column="21" selection-start="1749" selection-end="1749" vertical-scroll-proportion="0.0" vertical-offset="484" max-vertical-offset="2970">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Put#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="e#5129#5137#0" expanded="true" />
+            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#15111#15119#0" expanded="true" />
+            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -843,16 +902,20 @@
         <state line="13" column="8" selection-start="377" selection-end="389" vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="1134">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Put#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="e#5129#5137#0" expanded="true" />
+            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#15111#15119#0" expanded="true" />
+            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1009,19 +1072,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="28" selection-start="3908" selection-end="3908" vertical-scroll-proportion="0.62098503" vertical-offset="1708" max-vertical-offset="4077">
+        <state line="455" column="31" selection-start="14646" selection-end="14646" vertical-scroll-proportion="0.74615383" vertical-offset="2377" max-vertical-offset="3402">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Put#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="e#5129#5137#0" expanded="true" />
+            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#15111#15119#0" expanded="true" />
+            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
           </folding>
         </state>
       </provider>
