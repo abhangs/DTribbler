@@ -42,6 +42,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
     private String _remoteServerRequestID;
 
     public KVStoreServerHandler(String serverID, String storageServerAddress,String storageServerPort,String redisServerAddress, int redisServerPort,HashMap<String, String> backEndServersQueue,  long clockSeedTime)
+            throws Exception
     {
         this._serverID = serverID;
         this._storageServerAddress = storageServerAddress;
@@ -59,12 +60,12 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
         _serverCommandPrefixes = new ArrayList<String>();
         _serverCommandPrefixes.add(Utilities.getServerStatusPrefix());
         _serverCommandPrefixes.add(Utilities.getServerAllKeysPrefix());
-
-        Initialize();
-
         _remoteServerRequestID = remoteServerRequestPrefix+_serverID;
 
         _executorService = Executors.newCachedThreadPool();
+
+        if(!Initialize())
+                throw new Exception();
 
         //check initialize value and call the keeper joincluster with appropriate message
         //then change server status to running if everything goes well  , should be a separate call?
