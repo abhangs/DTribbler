@@ -251,6 +251,10 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
                             for (String item : allServersIDs) {
                                 try {
 
+                                    //check if key was removed during UpdateServerList
+                                    if(!_backendServersQueue.containsKey(item))
+                                        continue;
+
                                     String[]serverInfo = _backendServersQueue.get(item).split(":");
                                     TSocket socket = new TSocket(serverInfo[0], Integer.parseInt(serverInfo[1]));
                                     TTransport transport = socket;
@@ -328,6 +332,9 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
 
                             for (String item : allServersIDs) {
                                 try {
+
+                                    if(!_backendServersQueue.containsKey(key))
+                                          continue;
 
                                     String[]serverInfo = _backendServersQueue.get(item).split(":");
                                     TSocket socket = new TSocket(serverInfo[0], Integer.parseInt(serverInfo[1]));
