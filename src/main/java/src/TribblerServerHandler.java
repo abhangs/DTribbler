@@ -206,5 +206,10 @@ public class TribblerServerHandler implements Tribbler.Iface, KeyValueStore.Ifac
         return null;
     }
 
+    @Override
+    public boolean UpdateServerList(String jsonServerList) throws TException {
+        return false;
+    }
+
 
 }

@@ -1,5 +1,7 @@
 package src;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import include.KeyValueStore.*;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
@@ -67,9 +69,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
         if(!Initialize())
                 throw new Exception();
 
-        //check initialize value and call the keeper joincluster with appropriate message
-        //then change server status to running if everything goes well  , should be a separate call?
-
+        _serverStatus = KVServerStatus.Running;
     }
 
 
@@ -443,22 +443,93 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
         return KVStoreStatus.EPUTFAILED;
     }
 
+
     @Override
     public ClockResponse Clock(long atLeast) throws TException {
-        return null;
+
+        if(atLeast>_atLeast)
+            _atLeast = atLeast;
+
+        return new ClockResponse("",_atLeast,true);
     }
 
-    //In RPC calls if a server is dead then remove it from the runningServersQueue
+    @Override
+    public boolean UpdateServerList(String jsonServerList) throws TException {
+
+        {
+            try
+            {
+                Gson gson = new Gson();
+
+                _backendServersQueue = gson.fromJson(jsonServerList,_backendServersQueue.getClass());
+
+                return true;
+            }
+            catch (JsonSyntaxException e)
+            {
+               return false;
+            }
+        }
+    }
+
 
     public  GetResponse RemoteGet(String serverAddress,int serverPort, String key)
     {
-        return null;
+        GetResponse response;
+        try
+        {
+            TSocket socket = new TSocket(serverAddress,serverPort);
+            TTransport transport = socket;
+
+            TProtocol protocol = new TBinaryProtocol(transport);
+            KeyValueStore.Client client = new KeyValueStore.Client(protocol);
+
+            transport.open();
+
+            response = client.Get(remoteServerRequestPrefix + key);
+
+            transport.close();
+
+            return response;
+        }
+        catch (TException e)
+        {
+            e.printStackTrace();
+            response = new GetResponse();
+            response.setStatus(KVStoreStatus.EPUTFAILED);
+            response.setValue(null);
+            return response;
+        }
+
     }
 
-
-
     public  GetListResponse RemoteGetList(String serverAddress, int serverPort, String key) {
-        return null;
+        GetListResponse listResponse;
+        try
+        {
+            TSocket socket = new TSocket(serverAddress,serverPort);
+            TTransport transport = socket;
+
+            TProtocol protocol = new TBinaryProtocol(transport);
+            KeyValueStore.Client client = new KeyValueStore.Client(protocol);
+
+            transport.open();
+
+            listResponse = client.GetList(remoteServerRequestPrefix + key);
+
+            transport.close();
+
+            return listResponse;
+        }
+        catch (TException e)
+        {
+            e.printStackTrace();
+            listResponse = new GetListResponse();
+            listResponse.setStatus(KVStoreStatus.EPUTFAILED);
+            listResponse.setValues(null);
+            return listResponse;
+        }
+
     }
 
     //functions to perform various Server processes such synching, returning server status

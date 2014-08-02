@@ -67,10 +67,52 @@
       <file leaf-file-name="KVStoreServerHandler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="0" selection-start="1528" selection-end="1528" vertical-scroll-proportion="0.3323077" vertical-offset="999" max-vertical-offset="13824">
+            <state line="277" column="22" selection-start="8754" selection-end="8754" vertical-scroll-proportion="3.0562248" vertical-offset="2177" max-vertical-offset="4860">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#15182#15190#0" expanded="true" />
+                <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#UpdateServerList#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="e#17013#17021#0" expanded="true" />
+                <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TribblerServerHandler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/src/TribblerServerHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="84" selection-start="567" selection-end="567" vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="3564">
+              <folding>
+                <element signature="method#Get#0;class#TribblerServerHandler#0" expanded="false" />
+                <element signature="method#GetList#0;class#TribblerServerHandler#0" expanded="false" />
+                <element signature="method#Put#0;class#TribblerServerHandler#0" expanded="false" />
+                <element signature="method#AddToList#0;class#TribblerServerHandler#0" expanded="false" />
+                <element signature="method#RemoveFromList#0;class#TribblerServerHandler#0" expanded="false" />
+                <element signature="method#Clock#0;class#TribblerServerHandler#0" expanded="false" />
+                <element signature="method#UpdateServerList#0;class#TribblerServerHandler#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TribbleUser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/src/TribbleUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="22" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="783">
+              <folding>
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -79,8 +121,10 @@
       <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="11" selection-start="638" selection-end="638" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="837">
-              <folding />
+            <state line="20" column="21" selection-start="779" selection-end="779" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="972">
+              <folding>
+                <marker date="1406994310194" expanded="true" signature="625:778" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -111,15 +155,6 @@
                 <element signature="e#726#727#0" expanded="false" />
                 <element signature="e#748#749#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SubscriptionResponse.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/SubscriptionResponse.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="13" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="14958">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -174,11 +209,11 @@
         <option value="$PROJECT_DIR$/src/main/java/src/TribbleUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/include/Tribbler/TribbleStatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/include/Tribbler/Tribble.java" />
-        <option value="$PROJECT_DIR$/src/main/java/src/TribblerServerHandler.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/src/Utilities.java" />
         <option value="$PROJECT_DIR$/src/main/java/include/KeyValueStore/KVServerStatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/src/TempClass.java" />
+        <option value="$PROJECT_DIR$/src/main/java/src/TribblerServerHandler.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java" />
       </list>
     </option>
@@ -321,40 +356,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tribbler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DTribbler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DTribbler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="include" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KeyValueStore" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -680,12 +681,12 @@
       <updated>1405307798366</updated>
       <workItem from="1405307800676" duration="5237000" />
       <workItem from="1406094289274" duration="10680000" />
-      <workItem from="1406247679501" duration="25532000" />
+      <workItem from="1406247679501" duration="33905000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41449000" />
+    <option name="totallyTimeSpent" value="49822000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -724,7 +725,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22394367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2140845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -793,7 +794,21 @@
         <state line="49" column="21" selection-start="1749" selection-end="1749" vertical-scroll-proportion="0.0" vertical-offset="484" max-vertical-offset="2970">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#15182#15190#0" expanded="true" />
+            <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#UpdateServerList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#17013#17021#0" expanded="true" />
+            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -876,7 +891,21 @@
         <state line="13" column="8" selection-start="377" selection-end="389" vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="1134">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#15182#15190#0" expanded="true" />
+            <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#UpdateServerList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#17013#17021#0" expanded="true" />
+            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -916,15 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/src/TribbleUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="66" selection-end="66" vertical-scroll-proportion="0.0" vertical-offset="381" max-vertical-offset="810">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/TribbleResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="13" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="14094">
@@ -960,34 +980,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/ClockResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="3" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/SubscriptionResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="13" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="14067">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/Tribbler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="60" column="23" selection-start="2365" selection-end="2365" vertical-scroll-proportion="0.0" vertical-offset="243" max-vertical-offset="157950">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/src/TribblerServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="103" selection-start="6777" selection-end="6777" vertical-scroll-proportion="0.6261538" vertical-offset="4399" max-vertical-offset="5103">
-          <folding>
-            <element signature="method#RemoveFromList#0;class#TribblerServerHandler#0" expanded="false" />
-            <element signature="method#Clock#0;class#TribblerServerHandler#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -999,13 +995,6 @@
             <element signature="e#726#727#0" expanded="false" />
             <element signature="e#748#749#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="11" selection-start="638" selection-end="638" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="837">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1031,12 +1020,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/Tribbler/SubscriptionResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="9" selection-start="2086" selection-end="2086" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="14202">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/include/KeyValueStore/ClockResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="3" selection-start="900" selection-end="900" vertical-scroll-proportion="-0.45692307" vertical-offset="513" max-vertical-offset="14850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/src/TribbleUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="22" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="783">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="21" selection-start="779" selection-end="779" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="972">
+          <folding>
+            <marker date="1406994310194" expanded="true" signature="625:778" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/src/TribblerServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="84" selection-start="567" selection-end="567" vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="3564">
+          <folding>
+            <element signature="method#Get#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#GetList#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#Put#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#AddToList#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#RemoveFromList#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#Clock#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#UpdateServerList#0;class#TribblerServerHandler#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="0" selection-start="1528" selection-end="1528" vertical-scroll-proportion="0.3323077" vertical-offset="999" max-vertical-offset="13824">
+        <state line="277" column="22" selection-start="8754" selection-end="8754" vertical-scroll-proportion="3.0562248" vertical-offset="2177" max-vertical-offset="4860">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#15182#15190#0" expanded="true" />
+            <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#UpdateServerList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#17013#17021#0" expanded="true" />
+            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
           </folding>
         </state>
       </provider>
