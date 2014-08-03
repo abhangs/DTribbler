@@ -30,7 +30,11 @@ public class TribblerServer {
 
             KVStoreSimulator.Client kvStoreSimulatorClient = new KVStoreSimulator.Client(protocol);
 
+            transport.open();
+
             KVStoreServerInfo kvStoreServerInfo = kvStoreSimulatorClient.GetKVStoreServerInfo();
+
+            transport.close();
 
             //Next, start a TribblerServer using the KVStoreInfo
 
