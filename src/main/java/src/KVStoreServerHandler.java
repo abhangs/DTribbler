@@ -24,8 +24,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
     private String _serverID;
     private KVServerStatus _serverStatus;
     private HashMap<String,String> _backendServersQueue;
-    private HashSet<String> _runningServerCollection;
-    private HashSet<String> _deadServerCollection;
+
 
     private String _storageServerAddress;
     private String _storageServerPort;
@@ -43,19 +42,19 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
 
     private String _remoteServerRequestID;
 
-    public KVStoreServerHandler(String serverID, String storageServerAddress,String storageServerPort,String redisServerAddress, int redisServerPort,HashMap<String, String> backEndServersQueue,  long clockSeedTime)
+    public KVStoreServerHandler(String serverID, String storageServerAddress,String storageServerPort,String redisServerAddress, String redisServerPort,HashMap<String, String> backEndServersQueue,  long clockSeedTime)
             throws Exception
     {
         this._serverID = serverID;
         this._storageServerAddress = storageServerAddress;
         this._storageServerPort = storageServerPort;
         this._redisServerAddress = redisServerAddress;
-        this._redisServerPort = redisServerPort;
+        this._redisServerPort = Integer.parseInt(redisServerPort);
         this._atLeast = clockSeedTime;
 
         this._backendServersQueue = backEndServersQueue;
-        this._runningServerCollection = new HashSet<String>();
-        this._deadServerCollection = new HashSet<String>();
+
+
         this._jedis = new Jedis(_redisServerAddress,_redisServerPort);
 
 
