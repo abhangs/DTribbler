@@ -11,6 +11,7 @@ public class Utilities {
     private static final String serverStatusPrefix = "server_status";
     private static final String serverAllKeysPrefix = "server_all_keys";
 
+
     public static String getUserListPrefix() {
         return userListPrefix;
     }
