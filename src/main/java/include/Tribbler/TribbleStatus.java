@@ -5,9 +5,13 @@ package include.Tribbler; /**
  *  @generated
  */
 
+import java.util.Map;
+import java.util.HashMap;
+import org.apache.thrift.TEnum;
+
 /**
  * Enum type for returning status of a RPC request made to the
- * the include.Tribbler.Tribbler server.
+ * the Tribbler server.
  */
 public enum TribbleStatus implements org.apache.thrift.TEnum {
   OK(1),

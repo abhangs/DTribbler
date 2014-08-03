@@ -4,27 +4,36 @@ package include.Tribbler; /**
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
+import include.Tribbler.Tribble;
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
 import org.apache.thrift.scheme.StandardScheme;
 
 import org.apache.thrift.scheme.TupleScheme;
 import org.apache.thrift.protocol.TTupleProtocol;
-
+import org.apache.thrift.protocol.TProtocolException;
+import org.apache.thrift.EncodingUtils;
+import org.apache.thrift.TException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.EnumMap;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.EnumSet;
 import java.util.Collections;
 import java.util.BitSet;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Return type for a RPC call to the include.Tribbler.Tribbler server request user's tribbles.
+ * Return type for a RPC call to the Tribbler server request user's tribbles.
  */
 public class TribbleResponse implements org.apache.thrift.TBase<TribbleResponse, TribbleResponse._Fields>, java.io.Serializable, Cloneable {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("include.Tribbler.TribbleResponse");
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("TribbleResponse");
 
   private static final org.apache.thrift.protocol.TField TRIBBLES_FIELD_DESC = new org.apache.thrift.protocol.TField("tribbles", org.apache.thrift.protocol.TType.LIST, (short)1);
   private static final org.apache.thrift.protocol.TField STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("status", org.apache.thrift.protocol.TType.I32, (short)2);
@@ -361,7 +370,7 @@ public class TribbleResponse implements org.apache.thrift.TBase<TribbleResponse,
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("include.Tribbler.TribbleResponse(");
+    StringBuilder sb = new StringBuilder("TribbleResponse(");
     boolean first = true;
 
     sb.append("tribbles:");
@@ -425,14 +434,14 @@ public class TribbleResponse implements org.apache.thrift.TBase<TribbleResponse,
           case 1: // TRIBBLES
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list8 = iprot.readListBegin();
-                struct.tribbles = new ArrayList<Tribble>(_list8.size);
-                for (int _i9 = 0; _i9 < _list8.size; ++_i9)
+                org.apache.thrift.protocol.TList _list0 = iprot.readListBegin();
+                struct.tribbles = new ArrayList<Tribble>(_list0.size);
+                for (int _i1 = 0; _i1 < _list0.size; ++_i1)
                 {
-                  Tribble _elem10; // required
-                  _elem10 = new Tribble();
-                  _elem10.read(iprot);
-                  struct.tribbles.add(_elem10);
+                  Tribble _elem2; // required
+                  _elem2 = new Tribble();
+                  _elem2.read(iprot);
+                  struct.tribbles.add(_elem2);
                 }
                 iprot.readListEnd();
               }
@@ -468,9 +477,9 @@ public class TribbleResponse implements org.apache.thrift.TBase<TribbleResponse,
         oprot.writeFieldBegin(TRIBBLES_FIELD_DESC);
         {
           oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.tribbles.size()));
-          for (Tribble _iter11 : struct.tribbles)
+          for (Tribble _iter3 : struct.tribbles)
           {
-            _iter11.write(oprot);
+            _iter3.write(oprot);
           }
           oprot.writeListEnd();
         }
@@ -509,9 +518,9 @@ public class TribbleResponse implements org.apache.thrift.TBase<TribbleResponse,
       if (struct.isSetTribbles()) {
         {
           oprot.writeI32(struct.tribbles.size());
-          for (Tribble _iter12 : struct.tribbles)
+          for (Tribble _iter4 : struct.tribbles)
           {
-            _iter12.write(oprot);
+            _iter4.write(oprot);
           }
         }
       }
@@ -526,14 +535,14 @@ public class TribbleResponse implements org.apache.thrift.TBase<TribbleResponse,
       BitSet incoming = iprot.readBitSet(2);
       if (incoming.get(0)) {
         {
-          org.apache.thrift.protocol.TList _list13 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-          struct.tribbles = new ArrayList<Tribble>(_list13.size);
-          for (int _i14 = 0; _i14 < _list13.size; ++_i14)
+          org.apache.thrift.protocol.TList _list5 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+          struct.tribbles = new ArrayList<Tribble>(_list5.size);
+          for (int _i6 = 0; _i6 < _list5.size; ++_i6)
           {
-            Tribble _elem15; // required
-            _elem15 = new Tribble();
-            _elem15.read(iprot);
-            struct.tribbles.add(_elem15);
+            Tribble _elem7; // required
+            _elem7 = new Tribble();
+            _elem7.read(iprot);
+            struct.tribbles.add(_elem7);
           }
         }
         struct.setTribblesIsSet(true);

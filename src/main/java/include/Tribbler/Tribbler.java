@@ -4,6 +4,9 @@ package include.Tribbler; /**
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
+import include.Tribbler.SubscriptionResponse;
+import include.Tribbler.TribbleResponse;
+import include.Tribbler.TribbleStatus;
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
 import org.apache.thrift.scheme.StandardScheme;
@@ -31,7 +34,7 @@ import org.slf4j.LoggerFactory;
 public class Tribbler {
 
   /**
-   * RPC services offered by the include.Tribbler.Tribbler server.
+   * RPC services offered by the Tribbler server.
    */
   public interface Iface {
 

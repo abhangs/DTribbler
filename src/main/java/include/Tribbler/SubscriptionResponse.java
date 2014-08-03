@@ -10,22 +10,30 @@ import org.apache.thrift.scheme.StandardScheme;
 
 import org.apache.thrift.scheme.TupleScheme;
 import org.apache.thrift.protocol.TTupleProtocol;
-
+import org.apache.thrift.protocol.TProtocolException;
+import org.apache.thrift.EncodingUtils;
+import org.apache.thrift.TException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.EnumMap;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.EnumSet;
 import java.util.Collections;
 import java.util.BitSet;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Return type for a RPC call to the include.Tribbler.Tribbler server request user's list of
+ * Return type for a RPC call to the Tribbler server request user's list of
  * subscriptions.
  */
 public class SubscriptionResponse implements org.apache.thrift.TBase<SubscriptionResponse, SubscriptionResponse._Fields>, java.io.Serializable, Cloneable {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("include.Tribbler.SubscriptionResponse");
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("SubscriptionResponse");
 
   private static final org.apache.thrift.protocol.TField SUBSCRIPTIONS_FIELD_DESC = new org.apache.thrift.protocol.TField("subscriptions", org.apache.thrift.protocol.TType.LIST, (short)1);
   private static final org.apache.thrift.protocol.TField STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("status", org.apache.thrift.protocol.TType.I32, (short)2);
@@ -362,7 +370,7 @@ public class SubscriptionResponse implements org.apache.thrift.TBase<Subscriptio
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("include.Tribbler.SubscriptionResponse(");
+    StringBuilder sb = new StringBuilder("SubscriptionResponse(");
     boolean first = true;
 
     sb.append("subscriptions:");
@@ -426,13 +434,13 @@ public class SubscriptionResponse implements org.apache.thrift.TBase<Subscriptio
           case 1: // SUBSCRIPTIONS
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
-                org.apache.thrift.protocol.TList _list16 = iprot.readListBegin();
-                struct.subscriptions = new ArrayList<String>(_list16.size);
-                for (int _i17 = 0; _i17 < _list16.size; ++_i17)
+                org.apache.thrift.protocol.TList _list8 = iprot.readListBegin();
+                struct.subscriptions = new ArrayList<String>(_list8.size);
+                for (int _i9 = 0; _i9 < _list8.size; ++_i9)
                 {
-                  String _elem18; // required
-                  _elem18 = iprot.readString();
-                  struct.subscriptions.add(_elem18);
+                  String _elem10; // required
+                  _elem10 = iprot.readString();
+                  struct.subscriptions.add(_elem10);
                 }
                 iprot.readListEnd();
               }
@@ -468,9 +476,9 @@ public class SubscriptionResponse implements org.apache.thrift.TBase<Subscriptio
         oprot.writeFieldBegin(SUBSCRIPTIONS_FIELD_DESC);
         {
           oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.subscriptions.size()));
-          for (String _iter19 : struct.subscriptions)
+          for (String _iter11 : struct.subscriptions)
           {
-            oprot.writeString(_iter19);
+            oprot.writeString(_iter11);
           }
           oprot.writeListEnd();
         }
@@ -509,9 +517,9 @@ public class SubscriptionResponse implements org.apache.thrift.TBase<Subscriptio
       if (struct.isSetSubscriptions()) {
         {
           oprot.writeI32(struct.subscriptions.size());
-          for (String _iter20 : struct.subscriptions)
+          for (String _iter12 : struct.subscriptions)
           {
-            oprot.writeString(_iter20);
+            oprot.writeString(_iter12);
           }
         }
       }
@@ -526,13 +534,13 @@ public class SubscriptionResponse implements org.apache.thrift.TBase<Subscriptio
       BitSet incoming = iprot.readBitSet(2);
       if (incoming.get(0)) {
         {
-          org.apache.thrift.protocol.TList _list21 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-          struct.subscriptions = new ArrayList<String>(_list21.size);
-          for (int _i22 = 0; _i22 < _list21.size; ++_i22)
+          org.apache.thrift.protocol.TList _list13 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+          struct.subscriptions = new ArrayList<String>(_list13.size);
+          for (int _i14 = 0; _i14 < _list13.size; ++_i14)
           {
-            String _elem23; // required
-            _elem23 = iprot.readString();
-            struct.subscriptions.add(_elem23);
+            String _elem15; // required
+            _elem15 = iprot.readString();
+            struct.subscriptions.add(_elem15);
           }
         }
         struct.setSubscriptionsIsSet(true);

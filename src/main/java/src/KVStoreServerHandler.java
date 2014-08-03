@@ -443,7 +443,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
     public KVStoreStatus Put(String key, String value, String clientid) throws TException {
 
         if (this._serverStatus==KVServerStatus.Running) {
-            //Remote put request, we do not need to domino this the other back-end servers
+            //Remote put request, we do not need to propagate this the other back-end servers
             if(clientid.contains("remote"))
             {
                if(clientid.contentEquals(_remoteServerRequestID))
@@ -463,7 +463,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
                }
             }
 
-            //Original request, need to domino this to other servers
+            //Original request, need to propagate this to other servers
             if(clientid.contentEquals(_serverName))
             {
                 final String fKey = key;

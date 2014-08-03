@@ -10,24 +10,32 @@ import org.apache.thrift.scheme.StandardScheme;
 
 import org.apache.thrift.scheme.TupleScheme;
 import org.apache.thrift.protocol.TTupleProtocol;
-
+import org.apache.thrift.protocol.TProtocolException;
+import org.apache.thrift.EncodingUtils;
+import org.apache.thrift.TException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.EnumMap;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.EnumSet;
 import java.util.Collections;
 import java.util.BitSet;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * include.Tribbler.Tribble data type used by the server to represent user posts.
+ * Tribble data type used by the server to represent user posts.
  */
 public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields>, java.io.Serializable, Cloneable {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("include.Tribbler.Tribble");
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Tribble");
 
   private static final org.apache.thrift.protocol.TField USERID_FIELD_DESC = new org.apache.thrift.protocol.TField("userid", org.apache.thrift.protocol.TType.STRING, (short)1);
-  private static final org.apache.thrift.protocol.TField POSTED_FIELD_DESC = new org.apache.thrift.protocol.TField("posted", org.apache.thrift.protocol.TType.LIST, (short)2);
+  private static final org.apache.thrift.protocol.TField POSTED_FIELD_DESC = new org.apache.thrift.protocol.TField("posted", org.apache.thrift.protocol.TType.I64, (short)2);
   private static final org.apache.thrift.protocol.TField CONTENTS_FIELD_DESC = new org.apache.thrift.protocol.TField("contents", org.apache.thrift.protocol.TType.STRING, (short)3);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
@@ -37,7 +45,7 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
   }
 
   public String userid; // required
-  public List<Long> posted; // required
+  public long posted; // required
   public String contents; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
@@ -105,14 +113,15 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
   }
 
   // isset id assignments
+  private static final int __POSTED_ISSET_ID = 0;
+  private byte __isset_bitfield = 0;
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
     tmpMap.put(_Fields.USERID, new org.apache.thrift.meta_data.FieldMetaData("userid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.POSTED, new org.apache.thrift.meta_data.FieldMetaData("posted", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
-            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64))));
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     tmpMap.put(_Fields.CONTENTS, new org.apache.thrift.meta_data.FieldMetaData("contents", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
@@ -124,12 +133,13 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
 
   public Tribble(
     String userid,
-    List<Long> posted,
+    long posted,
     String contents)
   {
     this();
     this.userid = userid;
     this.posted = posted;
+    setPostedIsSet(true);
     this.contents = contents;
   }
 
@@ -137,16 +147,11 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
    * Performs a deep copy on <i>other</i>.
    */
   public Tribble(Tribble other) {
+    __isset_bitfield = other.__isset_bitfield;
     if (other.isSetUserid()) {
       this.userid = other.userid;
     }
-    if (other.isSetPosted()) {
-      List<Long> __this__posted = new ArrayList<Long>();
-      for (Long other_element : other.posted) {
-        __this__posted.add(other_element);
-      }
-      this.posted = __this__posted;
-    }
+    this.posted = other.posted;
     if (other.isSetContents()) {
       this.contents = other.contents;
     }
@@ -159,7 +164,8 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
   @Override
   public void clear() {
     this.userid = null;
-    this.posted = null;
+    setPostedIsSet(false);
+    this.posted = 0;
     this.contents = null;
   }
 
@@ -187,43 +193,27 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
     }
   }
 
-  public int getPostedSize() {
-    return (this.posted == null) ? 0 : this.posted.size();
-  }
-
-  public java.util.Iterator<Long> getPostedIterator() {
-    return (this.posted == null) ? null : this.posted.iterator();
-  }
-
-  public void addToPosted(long elem) {
-    if (this.posted == null) {
-      this.posted = new ArrayList<Long>();
-    }
-    this.posted.add(elem);
-  }
-
-  public List<Long> getPosted() {
+  public long getPosted() {
     return this.posted;
   }
 
-  public Tribble setPosted(List<Long> posted) {
+  public Tribble setPosted(long posted) {
     this.posted = posted;
+    setPostedIsSet(true);
     return this;
   }
 
   public void unsetPosted() {
-    this.posted = null;
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __POSTED_ISSET_ID);
   }
 
   /** Returns true if field posted is set (has been assigned a value) and false otherwise */
   public boolean isSetPosted() {
-    return this.posted != null;
+    return EncodingUtils.testBit(__isset_bitfield, __POSTED_ISSET_ID);
   }
 
   public void setPostedIsSet(boolean value) {
-    if (!value) {
-      this.posted = null;
-    }
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __POSTED_ISSET_ID, value);
   }
 
   public String getContents() {
@@ -264,7 +254,7 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
       if (value == null) {
         unsetPosted();
       } else {
-        setPosted((List<Long>)value);
+        setPosted((Long)value);
       }
       break;
 
@@ -285,7 +275,7 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
       return getUserid();
 
     case POSTED:
-      return getPosted();
+      return Long.valueOf(getPosted());
 
     case CONTENTS:
       return getContents();
@@ -333,12 +323,12 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
         return false;
     }
 
-    boolean this_present_posted = true && this.isSetPosted();
-    boolean that_present_posted = true && that.isSetPosted();
+    boolean this_present_posted = true;
+    boolean that_present_posted = true;
     if (this_present_posted || that_present_posted) {
       if (!(this_present_posted && that_present_posted))
         return false;
-      if (!this.posted.equals(that.posted))
+      if (this.posted != that.posted)
         return false;
     }
 
@@ -414,7 +404,7 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("include.Tribbler.Tribble(");
+    StringBuilder sb = new StringBuilder("Tribble(");
     boolean first = true;
 
     sb.append("userid:");
@@ -426,11 +416,7 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
     first = false;
     if (!first) sb.append(", ");
     sb.append("posted:");
-    if (this.posted == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.posted);
-    }
+    sb.append(this.posted);
     first = false;
     if (!first) sb.append(", ");
     sb.append("contents:");
@@ -459,6 +445,8 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
 
   private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
     try {
+      // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+      __isset_bitfield = 0;
       read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
     } catch (org.apache.thrift.TException te) {
       throw new java.io.IOException(te);
@@ -492,18 +480,8 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
             }
             break;
           case 2: // POSTED
-            if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
-              {
-                org.apache.thrift.protocol.TList _list0 = iprot.readListBegin();
-                struct.posted = new ArrayList<Long>(_list0.size);
-                for (int _i1 = 0; _i1 < _list0.size; ++_i1)
-                {
-                  long _elem2; // required
-                  _elem2 = iprot.readI64();
-                  struct.posted.add(_elem2);
-                }
-                iprot.readListEnd();
-              }
+            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+              struct.posted = iprot.readI64();
               struct.setPostedIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -537,18 +515,9 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
         oprot.writeString(struct.userid);
         oprot.writeFieldEnd();
       }
-      if (struct.posted != null) {
-        oprot.writeFieldBegin(POSTED_FIELD_DESC);
-        {
-          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64, struct.posted.size()));
-          for (long _iter3 : struct.posted)
-          {
-            oprot.writeI64(_iter3);
-          }
-          oprot.writeListEnd();
-        }
-        oprot.writeFieldEnd();
-      }
+      oprot.writeFieldBegin(POSTED_FIELD_DESC);
+      oprot.writeI64(struct.posted);
+      oprot.writeFieldEnd();
       if (struct.contents != null) {
         oprot.writeFieldBegin(CONTENTS_FIELD_DESC);
         oprot.writeString(struct.contents);
@@ -586,13 +555,7 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
         oprot.writeString(struct.userid);
       }
       if (struct.isSetPosted()) {
-        {
-          oprot.writeI32(struct.posted.size());
-          for (long _iter4 : struct.posted)
-          {
-            oprot.writeI64(_iter4);
-          }
-        }
+        oprot.writeI64(struct.posted);
       }
       if (struct.isSetContents()) {
         oprot.writeString(struct.contents);
@@ -608,16 +571,7 @@ public class Tribble implements org.apache.thrift.TBase<Tribble, Tribble._Fields
         struct.setUseridIsSet(true);
       }
       if (incoming.get(1)) {
-        {
-          org.apache.thrift.protocol.TList _list5 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64, iprot.readI32());
-          struct.posted = new ArrayList<Long>(_list5.size);
-          for (int _i6 = 0; _i6 < _list5.size; ++_i6)
-          {
-            long _elem7; // required
-            _elem7 = iprot.readI64();
-            struct.posted.add(_elem7);
-          }
-        }
+        struct.posted = iprot.readI64();
         struct.setPostedIsSet(true);
       }
       if (incoming.get(2)) {
