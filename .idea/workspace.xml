@@ -55,23 +55,6 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/src/KVStoreSimulatorHandler.java" line="34" class="src.KVStoreSimulatorHandler" package="src">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -81,22 +64,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="KVStoreServerHandler.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="373" column="24" selection-start="12595" selection-end="12595" vertical-scroll-proportion="-16.379519" vertical-offset="16716" max-vertical-offset="19224">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="e#6354#6377#0" expanded="true" />
+                <element signature="e#12034#12061#0" expanded="true" />
+                <element signature="e#13962#13963#0" expanded="true" />
+                <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="e#26603#26611#0" expanded="true" />
+                <element signature="method#GetServerStatus#0;class#KVStoreServerHandler#0" expanded="false" />
+                <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="KVStoreSimulatorHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreSimulatorHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="12" selection-start="3867" selection-end="3867" vertical-scroll-proportion="0.0" vertical-offset="3861" max-vertical-offset="9585">
+            <state line="105" column="16" selection-start="3125" selection-end="3125" vertical-scroll-proportion="0.0" vertical-offset="2389" max-vertical-offset="5022">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1370#1423#0" expanded="false" />
+                <element signature="e#1536#1591#0" expanded="false" />
                 <element signature="method#Clock#0;class#KVStoreSimulatorHandler#0" expanded="false" />
                 <element signature="method#UpdateServerList#0;class#KVStoreSimulatorHandler#0" expanded="false" />
-                <element signature="method#GetKVStoreServerInfo#0;class#KVStoreSimulatorHandler#0" expanded="false" />
                 <element signature="e#3783#3798#0" expanded="true" />
                 <element signature="method#HeartBeat#0;class#KVStoreSimulatorHandler#0" expanded="false" />
                 <element signature="e#4602#8258#0" expanded="true" />
                 <element signature="e#6596#8135#0" expanded="true" />
                 <element signature="e#8104#8105#0" expanded="true" />
                 <element signature="e#8247#8248#0" expanded="true" />
+                <element signature="method#CreateRedisServers#0;class#KVStoreSimulatorHandler#0" expanded="false" />
                 <element signature="e#9483#9498#0" expanded="true" />
+                <element signature="class#RedisCallable#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+                <element signature="class#KVStoreServerCallable#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+                <element signature="class#ServerMessage#0;class#KVStoreSimulatorHandler#0" expanded="false" />
                 <element signature="e#14096#14097#0" expanded="true" />
                 <element signature="e#14138#14139#0" expanded="true" />
                 <element signature="e#14196#14197#0" expanded="true" />
@@ -109,6 +119,7 @@
                 <element signature="e#14561#14562#0" expanded="true" />
                 <element signature="e#14631#14632#0" expanded="true" />
                 <element signature="e#14697#14698#0" expanded="true" />
+                <element signature="class#KVStoreServerRunnable#0;class#KVStoreSimulatorHandler#0" expanded="false" />
                 <element signature="class#RedisRunnable#0;class#KVStoreSimulatorHandler#0" expanded="false" />
                 <element signature="method#Get#0;class#KVStoreSimulatorHandler#0" expanded="false" />
                 <element signature="method#GetList#0;class#KVStoreSimulatorHandler#0" expanded="false" />
@@ -132,26 +143,9 @@
       <file leaf-file-name="KVStoreSimulatorServer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreSimulatorServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="698" selection-end="698" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1269">
+            <state line="23" column="0" selection-start="698" selection-end="698" vertical-scroll-proportion="0.0" vertical-offset="314" max-vertical-offset="1269">
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TribblerServerHandler.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/src/TribblerServerHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="213" column="4" selection-start="4102" selection-end="7007" vertical-scroll-proportion="1.9756098" vertical-offset="2565" max-vertical-offset="3564">
-              <folding>
-                <element signature="method#Get#0;class#TribblerServerHandler#0" expanded="false" />
-                <element signature="method#GetList#0;class#TribblerServerHandler#0" expanded="false" />
-                <element signature="method#Put#0;class#TribblerServerHandler#0" expanded="false" />
-                <element signature="method#AddToList#0;class#TribblerServerHandler#0" expanded="false" />
-                <element signature="method#RemoveFromList#0;class#TribblerServerHandler#0" expanded="false" />
-                <element signature="method#Clock#0;class#TribblerServerHandler#0" expanded="false" />
-                <element signature="method#UpdateServerList#0;class#TribblerServerHandler#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -197,7 +191,9 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/src/TribbleUser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="13" column="8" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="81" max-vertical-offset="783">
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -238,11 +234,11 @@
         <option value="$PROJECT_DIR$/src/main/java/include/KVStoreSimulator/KVStoreServerInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/include/KVStoreSimulator/KVStoreStatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/include/KVStoreSimulator/KVStoreSimulator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/src/KVStoreSimulator.java" />
         <option value="$PROJECT_DIR$/src/main/java/src/KVStoreSimulatorServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/src/KVStoreSimulatorHandler.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java" />
       </list>
     </option>
   </component>
@@ -767,12 +763,12 @@
       <updated>1405307798366</updated>
       <workItem from="1405307800676" duration="5237000" />
       <workItem from="1406094289274" duration="10680000" />
-      <workItem from="1406247679501" duration="56241000" />
+      <workItem from="1406247679501" duration="62510000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72158000" />
+    <option name="totallyTimeSpent" value="78427000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -803,22 +799,22 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13802817" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15915494" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33802816" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2140845" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2140845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2140845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24698795" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21017402" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32957748" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -883,18 +879,13 @@
             <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#Put#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#UpdateServerList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#6354#6377#0" expanded="true" />
+            <element signature="e#12034#12061#0" expanded="true" />
+            <element signature="e#13962#13963#0" expanded="true" />
             <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="e#17159#17167#0" expanded="true" />
+            <element signature="e#26603#26611#0" expanded="true" />
+            <element signature="method#GetServerStatus#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
           </folding>
         </state>
@@ -981,18 +972,13 @@
             <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#Put#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#UpdateServerList#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#6354#6377#0" expanded="true" />
+            <element signature="e#12034#12061#0" expanded="true" />
+            <element signature="e#13962#13963#0" expanded="true" />
             <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="e#17159#17167#0" expanded="true" />
+            <element signature="e#26603#26611#0" expanded="true" />
+            <element signature="method#GetServerStatus#0;class#KVStoreServerHandler#0" expanded="false" />
             <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
           </folding>
         </state>
@@ -1138,7 +1124,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/src/TribbleUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="8" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="81" max-vertical-offset="783">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1165,43 +1153,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreSimulatorHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="12" selection-start="3867" selection-end="3867" vertical-scroll-proportion="0.0" vertical-offset="3861" max-vertical-offset="9585">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Clock#0;class#KVStoreSimulatorHandler#0" expanded="false" />
-            <element signature="method#UpdateServerList#0;class#KVStoreSimulatorHandler#0" expanded="false" />
-            <element signature="method#GetKVStoreServerInfo#0;class#KVStoreSimulatorHandler#0" expanded="false" />
-            <element signature="e#3783#3798#0" expanded="true" />
-            <element signature="method#HeartBeat#0;class#KVStoreSimulatorHandler#0" expanded="false" />
-            <element signature="e#4602#8258#0" expanded="true" />
-            <element signature="e#6596#8135#0" expanded="true" />
-            <element signature="e#8104#8105#0" expanded="true" />
-            <element signature="e#8247#8248#0" expanded="true" />
-            <element signature="e#9483#9498#0" expanded="true" />
-            <element signature="e#14096#14097#0" expanded="true" />
-            <element signature="e#14138#14139#0" expanded="true" />
-            <element signature="e#14196#14197#0" expanded="true" />
-            <element signature="e#14250#14251#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14340#14341#0" expanded="true" />
-            <element signature="e#14405#14406#0" expanded="true" />
-            <element signature="e#14465#14466#0" expanded="true" />
-            <element signature="e#14513#14514#0" expanded="true" />
-            <element signature="e#14561#14562#0" expanded="true" />
-            <element signature="e#14631#14632#0" expanded="true" />
-            <element signature="e#14697#14698#0" expanded="true" />
-            <element signature="class#RedisRunnable#0;class#KVStoreSimulatorHandler#0" expanded="false" />
-            <element signature="method#Get#0;class#KVStoreSimulatorHandler#0" expanded="false" />
-            <element signature="method#GetList#0;class#KVStoreSimulatorHandler#0" expanded="false" />
-            <element signature="method#Put#0;class#KVStoreSimulatorHandler#0" expanded="false" />
-            <element signature="method#AddToList#0;class#KVStoreSimulatorHandler#0" expanded="false" />
-            <element signature="method#RemoveFromList#0;class#KVStoreSimulatorHandler#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/include/KVStoreSimulator/ClockResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="12" selection-start="1909" selection-end="1909" vertical-scroll-proportion="0.0" vertical-offset="460" max-vertical-offset="14850">
@@ -1209,27 +1160,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/src/TribblerServerHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="450" column="7" selection-start="14484" selection-end="14484" vertical-scroll-proportion="0.0" vertical-offset="2130" max-vertical-offset="2754">
+        <state line="111" column="29" selection-start="4098" selection-end="4098" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="3564">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#SyncServer#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#Get#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#GetList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#Put#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#AddToList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#RemoveFromList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#Clock#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#UpdateServerList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#RemoteGetList#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
-            <element signature="e#17159#17167#0" expanded="true" />
-            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Get#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#GetList#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#Put#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#AddToList#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#RemoveFromList#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#Clock#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="method#UpdateServerList#0;class#TribblerServerHandler#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1243,17 +1184,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/src/TribblerServerHandler.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="213" column="4" selection-start="4102" selection-end="7007" vertical-scroll-proportion="1.9756098" vertical-offset="2565" max-vertical-offset="3564">
+        <state line="2067" column="26" selection-start="81494" selection-end="81494" vertical-scroll-proportion="0.38273922" vertical-offset="54714" max-vertical-offset="83052">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreSimulatorHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="16" selection-start="3125" selection-end="3125" vertical-scroll-proportion="0.0" vertical-offset="2389" max-vertical-offset="5022">
           <folding>
-            <element signature="method#Get#0;class#TribblerServerHandler#0" expanded="false" />
-            <element signature="method#GetList#0;class#TribblerServerHandler#0" expanded="false" />
-            <element signature="method#Put#0;class#TribblerServerHandler#0" expanded="false" />
-            <element signature="method#AddToList#0;class#TribblerServerHandler#0" expanded="false" />
-            <element signature="method#RemoveFromList#0;class#TribblerServerHandler#0" expanded="false" />
-            <element signature="method#Clock#0;class#TribblerServerHandler#0" expanded="false" />
-            <element signature="method#UpdateServerList#0;class#TribblerServerHandler#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1370#1423#0" expanded="false" />
+            <element signature="e#1536#1591#0" expanded="false" />
+            <element signature="method#Clock#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="method#UpdateServerList#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="e#3783#3798#0" expanded="true" />
+            <element signature="method#HeartBeat#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="e#4602#8258#0" expanded="true" />
+            <element signature="e#6596#8135#0" expanded="true" />
+            <element signature="e#8104#8105#0" expanded="true" />
+            <element signature="e#8247#8248#0" expanded="true" />
+            <element signature="method#CreateRedisServers#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="e#9483#9498#0" expanded="true" />
+            <element signature="class#RedisCallable#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="class#KVStoreServerCallable#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="class#ServerMessage#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="e#14096#14097#0" expanded="true" />
+            <element signature="e#14138#14139#0" expanded="true" />
+            <element signature="e#14196#14197#0" expanded="true" />
+            <element signature="e#14250#14251#0" expanded="true" />
+            <element signature="e#14295#14296#0" expanded="true" />
+            <element signature="e#14340#14341#0" expanded="true" />
+            <element signature="e#14405#14406#0" expanded="true" />
+            <element signature="e#14465#14466#0" expanded="true" />
+            <element signature="e#14513#14514#0" expanded="true" />
+            <element signature="e#14561#14562#0" expanded="true" />
+            <element signature="e#14631#14632#0" expanded="true" />
+            <element signature="e#14697#14698#0" expanded="true" />
+            <element signature="class#KVStoreServerRunnable#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="class#RedisRunnable#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="method#Get#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="method#GetList#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="method#Put#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="method#AddToList#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+            <element signature="method#RemoveFromList#0;class#KVStoreSimulatorHandler#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/src/KVStoreServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="373" column="24" selection-start="12595" selection-end="12595" vertical-scroll-proportion="-16.379519" vertical-offset="16716" max-vertical-offset="19224">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#KVStoreServerHandler#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#Initialize#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#SyncDataFromServer#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#6354#6377#0" expanded="true" />
+            <element signature="e#12034#12061#0" expanded="true" />
+            <element signature="e#13962#13963#0" expanded="true" />
+            <element signature="method#RemoteGet#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#GetAllKeys#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="e#26603#26611#0" expanded="true" />
+            <element signature="method#GetServerStatus#0;class#KVStoreServerHandler#0" expanded="false" />
+            <element signature="method#ProcessCommand#0;class#KVStoreServerHandler#0" expanded="false" />
           </folding>
         </state>
       </provider>

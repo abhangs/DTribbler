@@ -12,8 +12,10 @@ import redis.clients.jedis.Jedis;
 
 
 import java.util.*;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.logging.Logger;
 
 public class KVStoreServerHandler implements KeyValueStore.Iface
@@ -21,7 +23,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
     private String remoteServerRequestPrefix = "remote:";
     //variable for clock
     private long _atLeast;
-    private String _serverID;
+    private String _serverName;
     private KVServerStatus _serverStatus;
     private HashMap<String,String> _backendServersQueue;
 
@@ -45,7 +47,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
     public KVStoreServerHandler(String serverID, String storageServerAddress,String storageServerPort,String redisServerAddress, String redisServerPort,HashMap<String, String> backEndServersQueue,  long clockSeedTime)
             throws Exception
     {
-        this._serverID = serverID;
+        this._serverName = serverID;
         this._storageServerAddress = storageServerAddress;
         this._storageServerPort = storageServerPort;
         this._redisServerAddress = redisServerAddress;
@@ -61,7 +63,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
         _serverCommandPrefixes = new ArrayList<String>();
         _serverCommandPrefixes.add(Utilities.getServerStatusPrefix());
         _serverCommandPrefixes.add(Utilities.getServerAllKeysPrefix());
-        _remoteServerRequestID = remoteServerRequestPrefix+_serverID;
+        _remoteServerRequestID = remoteServerRequestPrefix+ _serverName;
 
         _executorService = Executors.newCachedThreadPool();
 
@@ -92,7 +94,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
             for(String item:listResponse.getValues())
             {
                 String[] keyValue = item.split(":");
-                Put(keyValue[0],keyValue[1],this._serverID);
+                Put(keyValue[0],keyValue[1],this._serverName);
             }
 
             return KVStoreStatus.OK;
@@ -112,7 +114,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
         for(String item:allServers)
         {
             String[] serverInfo = item.split(":");
-            if(RemoteGet(serverInfo[0],Integer.parseInt(serverInfo[1]),Utilities.getServerStatusPrefix()).getValue().equals(KVServerStatus.Running))
+            if(RemoteGet(serverInfo[0],Integer.parseInt(serverInfo[1]),Utilities.getServerStatusPrefix()).getValue().contentEquals(String.valueOf(KVServerStatus.Running)))
             {
                KVStoreStatus storeStatus = SyncDataFromServer(serverInfo[0],Integer.parseInt(serverInfo[1]));
                if(KVStoreStatus.OK==storeStatus)
@@ -131,75 +133,309 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
     public GetResponse Get(String key) throws TException {
 
         GetResponse response = new GetResponse();
-        try
-        {
-            String value = _jedis.get(key);
+        if (_serverStatus == KVServerStatus.Running) {
 
-            if(value.isEmpty())
-            {
-                throw new NullPointerException();
-            }
+           if(key.contains(remoteServerRequestPrefix))
+           {
+               if(_serverCommandPrefixes.contains(key.split(":")[1]))
+               {
+                  GetResponse processCommandResponse = (GetResponse) ProcessCommand(key);
+                  return processCommandResponse;
+               }
 
-            response.setValue(value);
-            response.setStatus(KVStoreStatus.OK);
-            return response;
-        }
-        catch(Exception ex)
-        {
-            if(ex.getClass()== NullPointerException.class)
+               else
+               {
+                   //process a normal remote get request
+                   try
+                   {
+                       String value = _jedis.get(key);
+
+                       if(value.isEmpty())
+                       {
+                           throw new NullPointerException();
+                       }
+
+                       response.setValue(value);
+                       response.setStatus(KVStoreStatus.OK);
+                       return response;
+                   }
+                   catch(Exception ex)
+                   {
+                       if(ex.getClass()== NullPointerException.class)
+                       {
+                           response.setStatus(KVStoreStatus.EITEMNOTFOUND);
+                           response.setValue(null);
+                           return response;
+                       }
+
+                       response.setStatus(KVStoreStatus.EPUTFAILED);
+                       response.setValue(null);
+                       return  response;
+                   }
+
+               }
+           }
+
+            try
             {
-                response.setStatus(KVStoreStatus.EITEMNOTFOUND);
-                response.setValue(null);
+                String value = _jedis.get(key);
+
+                if(value.isEmpty())
+                {
+                    throw new NullPointerException();
+                }
+
+                response.setValue(value);
+                response.setStatus(KVStoreStatus.OK);
                 return response;
             }
+            catch(Exception ex)
+            {
+                if(ex.getClass()== NullPointerException.class)
+                {
 
-            response.setStatus(KVStoreStatus.EPUTFAILED);
-            response.setValue(null);
-            return  response;
+                    //value not found in this server, continue searching in all other servers
+                    //and return the value
+
+                    ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+                    Set<Callable<GetResponse>> responseCallables = new HashSet<Callable<GetResponse>>();
+
+                    Collection<String> keys = _backendServersQueue.keySet();
+
+                    final String remoteGetKey = key;
+
+                    for(String item:keys)
+                    {
+
+                       if(item==_serverName)
+                           continue;
+
+                       final String[] serverInfo = _backendServersQueue.get(item).split(":");
+
+                        responseCallables.add(new Callable<GetResponse>() {
+                            @Override
+                            public GetResponse call() throws Exception {
+                                GetResponse response;
+                                try
+                                {
+                                    TSocket socket = new TSocket(serverInfo[0],Integer.parseInt(serverInfo[1]));
+                                    TTransport transport = socket;
+
+                                    TProtocol protocol = new TBinaryProtocol(transport);
+                                    KeyValueStore.Client client = new KeyValueStore.Client(protocol);
+
+                                    transport.open();
+
+                                    response = client.Get(remoteServerRequestPrefix + remoteGetKey);
+
+                                    transport.close();
+
+                                    return response;
+                                }
+                                catch (TException e)
+                                {
+                                    e.printStackTrace();
+                                    response = new GetResponse();
+                                    response.setStatus(KVStoreStatus.EPUTFAILED);
+                                    response.setValue(null);
+                                    return response;
+                                }
+
+                            }
+                        });
+                    }
+
+
+                    try
+                    {
+                        List<Future<GetResponse>> futures = executorService.invokeAll(responseCallables);
+
+                        response.setStatus(KVStoreStatus.EITEMNOTFOUND);
+                        response.setValue(null);
+
+                        for(Future<GetResponse> item:futures)
+                        {
+                            if(item.get().status==KVStoreStatus.OK)
+                            {
+                                response.setStatus(KVStoreStatus.OK);
+                                response.setValue(item.get().getValue());
+                                break;
+                            }
+                        }
+
+                        return response;
+                    }
+                    catch (Exception e) {
+                        response.setStatus(KVStoreStatus.EPUTFAILED);
+                        response.setValue(null);
+                        return response;
+                    }
+
+
+
+                }
+
+                response.setStatus(KVStoreStatus.EPUTFAILED);
+                response.setValue(null);
+                return  response;
+            }
         }
 
+        return new GetResponse(KVStoreStatus.EPUTFAILED,"");
     }
 
     @Override
     public GetListResponse GetList(String key) throws TException {
         if(this._serverStatus==KVServerStatus.Running)
         {
-            if(_serverCommandPrefixes.contains(key))
+            if (key.contains(remoteServerRequestPrefix))
             {
-                return GetListResponse.class.cast(ProcessCommand(key));
+                if(_serverCommandPrefixes.contains(key.split(":")[1]))
+                {
+                    return GetListResponse.class.cast(ProcessCommand(key));
+                }
+
+                else
+                {
+                    //process a normal remote get list request
+                    GetListResponse listResponse = new GetListResponse();
+                    try
+                    {
+
+                        List<String> values = _jedis.lrange(key,0,-1);
+
+                        if(values.isEmpty())
+                        {
+                            throw new NullPointerException();
+                        }
+
+                        listResponse.setValues(values);
+                        listResponse.setStatus(KVStoreStatus.OK);
+                        return listResponse;
+                    }
+                    catch(Exception ex)
+                    {
+
+                        if(ex.getClass()==NullPointerException.class)
+                        {
+                            listResponse.setValues(null);
+                            listResponse.setStatus(KVStoreStatus.EITEMNOTFOUND);
+                            return listResponse;
+                        }
+
+                        listResponse.setValues(null);
+                        listResponse.setStatus(KVStoreStatus.EPUTFAILED);
+                        return listResponse;
+                    }
+                }
             }
-        }
 
-        GetListResponse listResponse = new GetListResponse();
-        try
-        {
-
-            List<String> values = _jedis.lrange(key,0,-1);
-
-            if(values.isEmpty())
+            GetListResponse listResponse = new GetListResponse();
+            try
             {
-                throw new NullPointerException();
-            }
 
-            listResponse.setValues(values);
-            listResponse.setStatus(KVStoreStatus.OK);
-            return listResponse;
-        }
-        catch(Exception ex)
-        {
+                List<String> values = _jedis.lrange(key,0,-1);
 
-            if(ex.getClass()==NullPointerException.class)
-            {
-                listResponse.setValues(null);
-                listResponse.setStatus(KVStoreStatus.EITEMNOTFOUND);
+                if(values.isEmpty())
+                {
+                    throw new NullPointerException();
+                }
+
+                listResponse.setValues(values);
+                listResponse.setStatus(KVStoreStatus.OK);
                 return listResponse;
             }
+            catch(Exception ex)
+            {
 
-            listResponse.setValues(null);
-            listResponse.setStatus(KVStoreStatus.EPUTFAILED);
-            return listResponse;
+                if(ex.getClass()==NullPointerException.class)
+                {
+
+                    //list not found, search in the all the remaining servers for the list
+                    //and return if found
+
+                    ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+                    Set<Callable<GetListResponse>> responseCallables = new HashSet<Callable<GetListResponse>>();
+
+                    Collection<String> keys = _backendServersQueue.keySet();
+
+                    for(String item:keys)
+                    {
+                        if(item==_serverName)
+                            continue;
+
+                        final String[] serverInfo = _backendServersQueue.get(item).split(":");
+                        final String remoteGetRequestKey = key;
+
+                        responseCallables.add(new Callable<GetListResponse>() {
+                            @Override
+                            public GetListResponse call() throws Exception {
+                                GetListResponse listResponse;
+                                try
+                                {
+                                    TSocket socket = new TSocket(serverInfo[0],Integer.parseInt(serverInfo[1]));
+                                    TTransport transport = socket;
+
+                                    TProtocol protocol = new TBinaryProtocol(transport);
+                                    KeyValueStore.Client client = new KeyValueStore.Client(protocol);
+
+                                    transport.open();
+
+                                    listResponse = client.GetList(remoteServerRequestPrefix + remoteGetRequestKey);
+
+                                    transport.close();
+
+                                    return listResponse;
+                                }
+                                catch (TException e)
+                                {
+                                    e.printStackTrace();
+                                    listResponse = new GetListResponse();
+                                    listResponse.setStatus(KVStoreStatus.EPUTFAILED);
+                                    listResponse.setValues(null);
+                                    return listResponse;
+                                }
+
+                            }
+                        });
+                    }
+
+                    try {
+                        List<Future<GetListResponse>> futures = executorService.invokeAll(responseCallables);
+
+                        listResponse.setValues(null);
+                        listResponse.setStatus(KVStoreStatus.EITEMNOTFOUND);
+
+                        for(Future<GetListResponse> item:futures)
+                        {
+                             if(item.get().status==KVStoreStatus.OK)
+                             {
+                                 listResponse.setStatus(KVStoreStatus.OK);
+                                 listResponse.setValues(item.get().getValues());
+                                 break;
+                             }
+                        }
+
+                        return listResponse;
+                    } catch (Exception e)
+                    {
+                        listResponse.setValues(null);
+                        listResponse.setStatus(KVStoreStatus.EPUTFAILED);
+                        return listResponse;
+                    }
+
+
+                }
+
+                listResponse.setValues(null);
+                listResponse.setStatus(KVStoreStatus.EPUTFAILED);
+                return listResponse;
+            }
         }
 
+        return new GetListResponse(KVStoreStatus.EPUTFAILED,null);
     }
 
 
@@ -228,7 +464,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
             }
 
             //Original request, need to domino this to other servers
-            if(clientid.contentEquals(_serverID))
+            if(clientid.contentEquals(_serverName))
             {
                 final String fKey = key;
                 final String fValue = value;
@@ -311,7 +547,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
                }
             }
 
-            if(clientid.contentEquals(_serverID))
+            if(clientid.contentEquals(_serverName))
             {
                 try
                 {
@@ -393,7 +629,7 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
                 }
             }
 
-            if(clientid.contentEquals(_serverID))
+            if(clientid.contentEquals(_serverName))
             {
                 try
                 {
@@ -566,6 +802,10 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
         return response;
     }
 
+    private GetResponse GetServerStatus() {
+        return new GetResponse(KVStoreStatus.OK,String.valueOf(_serverStatus));
+    }
+
     private Object ProcessCommand(String key) {
 
         if(key==Utilities.getServerAllKeysPrefix())
@@ -573,10 +813,15 @@ public class KVStoreServerHandler implements KeyValueStore.Iface
             return GetAllKeys();
         }
 
-        
-    
+        if(key==Utilities.getServerStatusPrefix())
+        {
+            return GetServerStatus();
+        }
+
        return null;
     }
+
+
 
 }
 
