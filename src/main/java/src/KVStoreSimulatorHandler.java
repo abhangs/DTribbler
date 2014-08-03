@@ -23,15 +23,14 @@ import java.util.concurrent.*;
 
 public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
 
-    private static HashMap<String,String> _backendServersQueue;
-    private static HashMap<String,String> _redisServersQueue;
+    private static HashMap<String, String> _backendServersQueue;
+    private static HashMap<String, String> _redisServersQueue;
     private static long _atLeast;
     private static boolean _kvStoresReady = false;
     private static boolean _redisServersReady = false;
     private static String _respondedServerValue;
 
-    public KVStoreSimulatorHandler()
-    {
+    public KVStoreSimulatorHandler() {
         _backendServersQueue = new HashMap<String, String>();
         _redisServersQueue = new HashMap<String, String>();
         _atLeast = 0;
@@ -41,13 +40,13 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
 
         //busy waiting for all redis severs to be initialized
         //by the executor service
-        while(!_redisServersReady);
+        while (!_redisServersReady) ;
 
         CreateKVStoreServers();
 
         //busy waiting for all KVStore severs to be initialized
         //by the executor service
-        while(!_kvStoresReady);
+        while (!_kvStoresReady) ;
 
         //setup the heartbeat and clock synchronization for each KVStore server
         HeartBeat();
@@ -56,73 +55,69 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
 
     @Override
     public ClockResponse Clock(long atLeast) throws TException {
-        return new ClockResponse("",_atLeast,true);
+        return new ClockResponse("", _atLeast, true);
     }
 
     @Override
     public boolean UpdateServerList(String jsonServerList) throws TException {
 
         Gson gson = new Gson();
-        _backendServersQueue = gson.fromJson(jsonServerList,_backendServersQueue.getClass());
+        _backendServersQueue = gson.fromJson(jsonServerList, _backendServersQueue.getClass());
         return true;
     }
 
     @Override
     public KVStoreServerInfo GetKVStoreServerInfo() throws TException {
 
-      //Circulate between responded server names for load balancing
+        //Circulate between responded server names for load balancing
 
-      KVStoreServerInfo kvStoreServerInfo = new KVStoreServerInfo();
+        KVStoreServerInfo kvStoreServerInfo = new KVStoreServerInfo();
 
-      Collection<String> keys = _backendServersQueue.keySet();
+        Collection<String> keys = _backendServersQueue.keySet();
 
-      for(String item:keys)
-      {
-          String value = _backendServersQueue.get(item);
+        for (String item : keys) {
+            String value = _backendServersQueue.get(item);
 
-          if(value==_respondedServerValue)
-              continue;
+            if (value == _respondedServerValue)
+                continue;
 
-          String serverAddress = value.split(":")[0];
-          String serverPort = value.split(":")[1];
+            String serverAddress = value.split(":")[0];
+            String serverPort = value.split(":")[1];
 
-          kvStoreServerInfo.serverName = item;
-          kvStoreServerInfo.serverAddress = serverAddress;
-          kvStoreServerInfo.serverPort = serverPort;
+            kvStoreServerInfo.serverName = item;
+            kvStoreServerInfo.serverAddress = serverAddress;
+            kvStoreServerInfo.serverPort = serverPort;
 
-          _respondedServerValue = value;
-      }
+            _respondedServerValue = value;
+        }
 
-      return kvStoreServerInfo;
+        return kvStoreServerInfo;
 
     }
 
 
-    public static void CreateKVStoreServers()
-    {
+    public static void CreateKVStoreServers() {
         Collection<String> allRedisServers = _redisServersQueue.keySet();
 
         int serverPortSeed = 9090;
 
         ExecutorService executorService = Executors.newCachedThreadPool();
 
-        for(String item: allRedisServers)
-        {
+        for (String item : allRedisServers) {
             try {
                 String serverName = UUID.randomUUID().toString();
                 String redisServerAddress = _redisServersQueue.get(item).split(":")[0];
                 String redisServerPort = _redisServersQueue.get(item).split(":")[1];
-                KVStoreServerCallable kvStoreWorker = new KVStoreServerCallable(serverName,"localhost",String.valueOf(serverPortSeed+1),redisServerAddress,redisServerPort,_backendServersQueue,_atLeast);
+                KVStoreServerCallable kvStoreWorker = new KVStoreServerCallable(serverName, "localhost", String.valueOf(serverPortSeed + 1), redisServerAddress, redisServerPort, _backendServersQueue, _atLeast);
                 FutureTask<ServerMessage> futureTask = new FutureTask<ServerMessage>(kvStoreWorker);
                 executorService.submit(futureTask);
 
-                while(!futureTask.isDone());
+                while (!futureTask.isDone()) ;
 
-                if(futureTask.get().is_serverStarted())
-                    _backendServersQueue.put(serverName,"localhost:"+String.valueOf(serverPortSeed+1));
+                if (futureTask.get().is_serverStarted())
+                    _backendServersQueue.put(serverName, "localhost:" + String.valueOf(serverPortSeed + 1));
 
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -130,112 +125,108 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
         executorService.shutdown();
 
         try {
-            executorService.awaitTermination(Long.MAX_VALUE,TimeUnit.NANOSECONDS);
+            executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
             _kvStoresReady = true;
         } catch (InterruptedException e) {
             _kvStoresReady = false;
         }
     }
 
-    public static void HeartBeat()
-    {
+    public static void HeartBeat() {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-        executorService.submit(new Callable<ServerMessage>() {
 
+        executorService.execute(new Runnable() {
             @Override
-            public ServerMessage call() throws Exception {
-                _atLeast++;
-
-                Thread.sleep(3000);
-
-                Collection<String> allServersIDs = _backendServersQueue.keySet();
-
-                for (String item : allServersIDs) {
+            public void run() {
+                while (true) {
+                    _atLeast++;
                     try {
-
-
-                        //check if backend sever information was removed
-                        if(!_backendServersQueue.containsKey(item))
-                            continue;
-
-                        String[]serverInfo = _backendServersQueue.get(item).split(":");
-                        TSocket socket = new TSocket(serverInfo[0], Integer.parseInt(serverInfo[1]));
-                        TTransport transport = socket;
-
-                        TProtocol protocol = new TBinaryProtocol(transport);
-                        KeyValueStore.Client client = new KeyValueStore.Client(protocol);
-
-                        transport.open();
-
-                        include.KeyValueStore.ClockResponse clockResponse = client.Clock(_atLeast );
-
-                        if(!clockResponse.isSuccess())
-                        {
-                            throw new Exception();
-                        }
-
-                        transport.close();
-
-
+                        //ideally should not throw an exception
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                    catch (Exception ex)
-                    {
-                        //backend server failed to respond, remove from backend servers queue
-                         _backendServersQueue.remove(item);
 
-                    }
-                    finally
-                    {
-                        //check if backend server was removed from servers queue and propagate
-                        //this information to all other backend servers
-                        if(!_backendServersQueue.containsKey(item))
-                        {
-                            ExecutorService service = Executors.newSingleThreadExecutor();
-                            service.execute(new Runnable() {
+                    Collection<String> allServersIDs = _backendServersQueue.keySet();
 
-                                @Override
-                                public void run() {
-                                    Collection<String> keys = _backendServersQueue.keySet();
+                    for (String item : allServersIDs) {
+                        try {
 
-                                    for(String item:keys)
-                                    {
-                                        try
-                                        {
-                                            String[]serverInfo = _backendServersQueue.get(item).split(":");
-                                            TSocket socket = new TSocket(serverInfo[0], Integer.parseInt(serverInfo[1]));
-                                            TTransport transport = socket;
 
-                                            TProtocol protocol = new TBinaryProtocol(transport);
-                                            KeyValueStore.Client client = new KeyValueStore.Client(protocol);
+                            //check if backend sever information was removed
+                            if (!_backendServersQueue.containsKey(item))
+                                continue;
 
-                                            Gson gson = new Gson();
+                            String[] serverInfo = _backendServersQueue.get(item).split(":");
+                            TSocket socket = new TSocket(serverInfo[0], Integer.parseInt(serverInfo[1]));
+                            TTransport transport = socket;
 
-                                            //Here propagate the value and forget, we do not handle exceptions
-                                            client.UpdateServerList(gson.toJson(_backendServersQueue));
+                            TProtocol protocol = new TBinaryProtocol(transport);
+                            KeyValueStore.Client client = new KeyValueStore.Client(protocol);
 
-                                            transport.open();
+                            transport.open();
 
-                                        }
-                                        catch (Exception ex)
-                                        {
+                            include.KeyValueStore.ClockResponse clockResponse = client.Clock(_atLeast);
 
+                            if (!clockResponse.isSuccess()) {
+                                throw new Exception();
+                            }
+
+                            transport.close();
+
+
+                        } catch (Exception ex) {
+                            //backend server failed to respond, remove from backend servers queue
+                            _backendServersQueue.remove(item);
+
+                        } finally {
+                            //check if backend server was removed from servers queue and propagate
+                            //this information to all other backend servers
+                            if (!_backendServersQueue.containsKey(item)) {
+                                ExecutorService service = Executors.newSingleThreadExecutor();
+                                service.execute(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        Collection<String> keys = _backendServersQueue.keySet();
+
+                                        for (String item : keys) {
+                                            try {
+                                                String[] serverInfo = _backendServersQueue.get(item).split(":");
+                                                TSocket socket = new TSocket(serverInfo[0], Integer.parseInt(serverInfo[1]));
+                                                TTransport transport = socket;
+
+                                                TProtocol protocol = new TBinaryProtocol(transport);
+                                                KeyValueStore.Client client = new KeyValueStore.Client(protocol);
+
+                                                Gson gson = new Gson();
+
+                                                //Here propagate the value and forget, we do not handle exceptions
+                                                client.UpdateServerList(gson.toJson(_backendServersQueue));
+
+                                                transport.open();
+
+                                            } catch (Exception ex) {
+
+                                            }
                                         }
                                     }
-                                }
-                            });
+                                });
+                                service.shutdown();
+                            }
                         }
+
                     }
 
                 }
-
-                return null;
             }
         });
+
+
     }
 
-    public static void CreateRedisServers()
-    {
+    public static void CreateRedisServers() {
         int exeArgumentsCount = 4;
 
         String exePath = "E:\\projects\\redis-2.8\\redis-2.8\\bin\\release\\redis-2.8.12\\redis-server.exe";
@@ -245,22 +236,21 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
         String exeArgument3 = "E:\\projects\\redis-2.8\\redis-2.8\\bin\\release\\redis-2.8.12\\redis6380.windows.conf";
         String exeArgument4 = "E:\\projects\\redis-2.8\\redis-2.8\\bin\\release\\redis-2.8.12\\redis6379.windows.conf";
 
-        int[] exePorts = new int[]{6379,6380,6381,6382};
-        String[] exeArguments = new String[]{exeArgument1,exeArgument2,exeArgument3,exeArgument4};
+        int[] exePorts = new int[]{6379, 6380, 6381, 6382};
+        String[] exeArguments = new String[]{exeArgument1, exeArgument2, exeArgument3, exeArgument4};
 
         ExecutorService executorService = Executors.newCachedThreadPool();
 
-        for(int i=0;i<exeArgumentsCount;i++)
-        {
+        for (int i = 0; i < exeArgumentsCount; i++) {
             try {
                 String severName = UUID.randomUUID().toString();
-                RedisCallable redisWorker = new RedisCallable(exePath,exeArguments[i],severName);
+                RedisCallable redisWorker = new RedisCallable(exePath, exeArguments[i], severName);
                 FutureTask<ServerMessage> futureTask = new FutureTask<ServerMessage>(redisWorker);
                 executorService.submit(futureTask);
 
-                while(!futureTask.isDone());
-                if(futureTask.get().is_serverStarted())
-                _redisServersQueue.put(severName,"localhost:"+exePorts[i]);
+                while (!futureTask.isDone()) ;
+                if (futureTask.get().is_serverStarted())
+                    _redisServersQueue.put(severName, "localhost:" + exePorts[i]);
             } catch (Exception e) {
                 e.printStackTrace();
 
@@ -269,26 +259,22 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
 
         executorService.shutdown();
 
-        try
-        {
-            executorService.awaitTermination(Long.MAX_VALUE,TimeUnit.NANOSECONDS);
+        try {
+            executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
             _redisServersReady = true;
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             _redisServersReady = false;
         }
 
     }
 
 
-    public static class RedisCallable implements Callable<ServerMessage>
-    {
+    public static class RedisCallable implements Callable<ServerMessage> {
         private String _serverEXEPath;
         private String _serverEXEArguments;
         private String _serverName;
 
-        RedisCallable(String serverEXEPath,String serverEXEArguments, String serverName)
-        {
+        RedisCallable(String serverEXEPath, String serverEXEArguments, String serverName) {
             _serverEXEPath = serverEXEPath;
             _serverEXEArguments = serverEXEArguments;
             _serverName = serverName;
@@ -296,17 +282,14 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
 
         @Override
         public ServerMessage call() throws Exception {
-            try
-            {
-                Process process = new ProcessBuilder(_serverEXEPath,_serverEXEArguments).start();
+            try {
+                Process process = new ProcessBuilder(_serverEXEPath, _serverEXEArguments).start();
                 ServerMessage serverMessage = new ServerMessage();
                 serverMessage.set_serverStarted(true);
                 serverMessage.set_exceptionMessage("");
                 serverMessage.set_serverName(_serverName);
                 return serverMessage;
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 ServerMessage serverMessage = new ServerMessage();
                 serverMessage.set_serverName(_serverName);
                 serverMessage.set_exceptionMessage(e.getMessage());
@@ -318,18 +301,16 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
     }
 
 
-    public static class KVStoreServerCallable implements Callable<ServerMessage>
-    {
+    public static class KVStoreServerCallable implements Callable<ServerMessage> {
         private String _serverName;
         private String _serverAddress;
         private String _serverPort;
         private String _redisServerAddress;
         private String _redisServerPort;
-        private HashMap<String,String> _backendServersQueue;
+        private HashMap<String, String> _backendServersQueue;
         private long _atLeast;
 
-        KVStoreServerCallable(String serverName, String serverAddress, String serverPort,String redisServerAddress,String redisServerPort, HashMap<String,String> backendServersQueue, long atLeast)
-        {
+        KVStoreServerCallable(String serverName, String serverAddress, String serverPort, String redisServerAddress, String redisServerPort, HashMap<String, String> backendServersQueue, long atLeast) {
             _serverName = serverName;
             _serverAddress = serverAddress;
             _serverPort = serverPort;
@@ -342,9 +323,8 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
 
         @Override
         public ServerMessage call() throws Exception {
-            try
-            {
-                KVStoreServerHandler kvStoreServerHandler = new KVStoreServerHandler(_serverName,_serverAddress,_serverPort,_redisServerAddress,_redisServerPort,_backendServersQueue,_atLeast);
+            try {
+                KVStoreServerHandler kvStoreServerHandler = new KVStoreServerHandler(_serverName, _serverAddress, _serverPort, _redisServerAddress, _redisServerPort, _backendServersQueue, _atLeast);
                 TProcessor processor = new KeyValueStore.Processor<KeyValueStore.Iface>(kvStoreServerHandler);
                 TServerTransport transport = new TServerSocket(Integer.parseInt(_serverPort));
                 TTransportFactory transportFactory = new TTransportFactory();
@@ -359,9 +339,7 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
                 serverMessage.set_serverStarted(true);
 
                 return serverMessage;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 ServerMessage serverMessage = new ServerMessage();
                 serverMessage.set_serverName(_serverName);
                 serverMessage.set_exceptionMessage(ex.getMessage());
@@ -373,8 +351,7 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
     }
 
 
-    public static class ServerMessage
-    {
+    public static class ServerMessage {
         private String _serverName;
         private boolean _serverStarted;
         private String _exceptionMessage;
@@ -407,18 +384,16 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
     //============================= non required methods and classes (may be essential in future)=======================
 
     //Unused
-    public static class KVStoreServerRunnable implements Runnable
-    {
+    public static class KVStoreServerRunnable implements Runnable {
         private String _serverName;
         private String _serverAddress;
         private String _serverPort;
         private String _redisServerAddress;
         private String _redisServerPort;
-        private HashMap<String,String> _backendServersQueue;
+        private HashMap<String, String> _backendServersQueue;
         private long _atLeast;
 
-        KVStoreServerRunnable(String serverName, String serverAddress, String serverPort,String redisServerAddress,String redisServerPort, HashMap<String,String> backendServersQueue, long atLeast)
-        {
+        KVStoreServerRunnable(String serverName, String serverAddress, String serverPort, String redisServerAddress, String redisServerPort, HashMap<String, String> backendServersQueue, long atLeast) {
             _serverName = serverName;
             _serverAddress = serverAddress;
             _serverPort = serverPort;
@@ -430,9 +405,8 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
 
         @Override
         public void run() {
-            try
-            {
-                KVStoreServerHandler kvStoreServerHandler = new KVStoreServerHandler(_serverName,_serverAddress,_serverPort,_redisServerAddress,_redisServerPort,_backendServersQueue,_atLeast);
+            try {
+                KVStoreServerHandler kvStoreServerHandler = new KVStoreServerHandler(_serverName, _serverAddress, _serverPort, _redisServerAddress, _redisServerPort, _backendServersQueue, _atLeast);
                 TProcessor processor = new KeyValueStore.Processor<KeyValueStore.Iface>(kvStoreServerHandler);
                 TServerTransport transport = new TServerSocket(Integer.parseInt(_serverPort));
                 TTransportFactory transportFactory = new TTransportFactory();
@@ -441,23 +415,19 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
                 TSimpleServer simpleServer = new TSimpleServer(new TSimpleServer.Args(transport).processor(processor).inputProtocolFactory(protocolFactory).transportFactory(transportFactory));
                 simpleServer.serve();
 
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
 
             }
         }
     }
 
     //Unused
-    public static class RedisRunnable implements Runnable
-    {
+    public static class RedisRunnable implements Runnable {
         private String _serverEXEPath;
         private String _serverEXEArguments;
         private String _serverName;
 
-        RedisRunnable(String serverEXEPath,String serverEXEArguments, String serverName)
-        {
+        RedisRunnable(String serverEXEPath, String serverEXEArguments, String serverName) {
             _serverEXEPath = serverEXEPath;
             _serverEXEArguments = serverEXEArguments;
             _serverName = serverName;
@@ -466,7 +436,7 @@ public class KVStoreSimulatorHandler implements KVStoreSimulator.Iface {
         @Override
         public void run() {
             try {
-                Process process = new ProcessBuilder(_serverEXEPath,_serverEXEArguments).start();
+                Process process = new ProcessBuilder(_serverEXEPath, _serverEXEArguments).start();
                 process.waitFor();
             } catch (Exception e) {
                 e.printStackTrace();
